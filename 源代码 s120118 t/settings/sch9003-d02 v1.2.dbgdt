@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<Project>
+  <Desktop>
+    <Static>
+      <Debug-Log/>
+      <Build>
+        
+        
+        
+        
+      <PreferedWindows><Position>3</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows><ColumnWidth0>20</ColumnWidth0><ColumnWidth1>723</ColumnWidth1><ColumnWidth2>193</ColumnWidth2><ColumnWidth3>48</ColumnWidth3></Build>
+      <Workspace>
+        <ColumnWidths>
+          
+          
+          
+          
+        <Column0>158</Column0><Column1>4</Column1><Column2>27</Column2><Column3>14676700</Column3></ColumnWidths>
+      </Workspace>
+      <Disassembly>
+        
+        
+      <PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows><MixedMode>0</MixedMode><CodeCovShow>0</CodeCovShow></Disassembly>
+      <Watch>
+        <Format>
+          <struct_types/>
+          <watch_formats><Fmt><Key>{W}Watch-0:AltiVal</Key><Value>4</Value></Fmt><Fmt><Key>{W}Watch-0:gv_Compass</Key><Value>4</Value></Fmt><Fmt><Key>{W}Watch-0:gv_Temperature</Key><Value>4</Value></Fmt><Fmt><Key>{W}Watch-0:head</Key><Value>4</Value></Fmt><Fmt><Key>{W}Watch-0:pres_val</Key><Value>4</Value></Fmt><Fmt><Key>{W}Watch-0:val</Key><Value>4</Value></Fmt></watch_formats>
+        </Format>
+        
+        
+        
+        
+      <Column0>153</Column0><Column1>214</Column1><Column2>109</Column2><Column3>100</Column3></Watch>
+      <Register><PreferedWindows><Position>2</Position><ScreenPosX>0</ScreenPosX><ScreenPosY>0</ScreenPosY><Windows/></PreferedWindows></Register>
+    <QuickWatch><Column0>100</Column0><Column1>100</Column1><Column2>100</Column2><Column3>100</Column3></QuickWatch></Static>
+    <Windows>
+      
+      
+      
+      
+    <Wnd2>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-32027-26153</Identity>
+            <TabName>Debug Log</TabName>
+            <Factory>Debug-Log</Factory>
+            <Session/>
+          </Tab>
+          
+          <Tab>
+            <Identity>TabID-12162-26525</Identity>
+            <TabName>Watch</TabName>
+            <Factory>Watch</Factory>
+            <Session>
+              <Expressions>
+                
+                
+                
+              <Expression><Expression>SeaLevel</Expression></Expression><Expression><Expression>BaroOffset</Expression></Expression></Expressions>
+              
+              
+              
+              
+              
+            <TabId>0</TabId><Column0>153</Column0><Column1>214</Column1><Column2>109</Column2><Column3>100</Column3></Session>
+          </Tab>
+        <Tab><Identity>TabID-10747-13835</Identity><TabName>Watch</TabName><Factory>Watch</Factory><Session><Expressions><Expression><Expression>BaroVal</Expression></Expression><Expression><Expression>AltiVal</Expression></Expression></Expressions><TabId>0</TabId><Column0>153</Column0><Column1>214</Column1><Column2>109</Column2><Column3>100</Column3></Session></Tab><Tab><Identity>TabID-25970-13959</Identity><TabName>Quick Watch</TabName><Factory>QuickWatch</Factory><Session><Expression>BaroVal</Expression></Session></Tab><Tab><Identity>TabID-19801-29091</Identity><TabName>Watch</TabName><Factory>Watch</Factory><Session><Expressions><Expression><Expression>SysTag</Expression></Expression></Expressions><TabId>0</TabId><Column0>153</Column0><Column1>214</Column1><Column2>109</Column2><Column3>100</Column3></Session></Tab></Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd2><Wnd3>
+        <Tabs>
+          <Tab>
+            <Identity>TabID-10008-26156</Identity>
+            <TabName>Workspace</TabName>
+            <Factory>Workspace</Factory>
+            <Session>
+              
+            <NodeDict><ExpandedNode>sch9003-d02 v1.2</ExpandedNode><ExpandedNode>sch9003-d02 v1.2/TWI_slave.c</ExpandedNode></NodeDict></Session>
+          </Tab>
+        </Tabs>
+        
+      <SelectedTab>0</SelectedTab></Wnd3><Wnd5><Tabs><Tab><Identity>TabID-4287-6738</Identity><TabName>Disassembly</TabName><Factory>Disassembly</Factory><Session/></Tab></Tabs><SelectedTab>0</SelectedTab></Wnd5></Windows>
+    <Editor>
+      
+      
+      
+      
+    <Pane><Tab><Factory>TextEditor</Factory><Filename>D:\WorkNew\project\&#x540C;&#x4e8B;&#x9879;&#x76ee;\_yfzeng\sch9003-d22\__sch9003-d22 OK\&#x5C0F;&#x677F;\software\s120118 t\src\Main.c</Filename><XPos>0</XPos><YPos>25</YPos><SelStart>523</SelStart><SelEnd>523</SelEnd></Tab><ActiveTab>0</ActiveTab></Pane><ActivePane>0</ActivePane><Sizes><Pane><X>1000000</X><Y>1000000</Y></Pane></Sizes><SplitMode>1</SplitMode></Editor>
+    <Positions>
+      
+      
+      
+      
+      
+    <Top><Row0><Sizes><Toolbar-01489930><key>iaridepm.enu1</key></Toolbar-01489930></Sizes></Row0><Row1><Sizes><Toolbar-0601ece0><key>debuggergui.enu1</key></Toolbar-0601ece0></Sizes></Row1></Top><Left><Row0><Sizes><Wnd3><Rect><Top>-2</Top><Left>-2</Left><Bottom>389</Bottom><Right>209</Right><x>-2</x><y>-2</y><xscreen>0</xscreen><yscreen>0</yscreen><sizeHorzCX>0</sizeHorzCX><sizeHorzCY>0</sizeHorzCY><sizeVertCX>164844</sizeVertCX><sizeVertCY>568314</sizeVertCY></Rect></Wnd3></Sizes></Row0></Left><Right><Row0><Sizes><Wnd5><Rect><Top>-2</Top><Left>-2</Left><Bottom>389</Bottom><Right>155</Right><x>-2</x><y>-2</y><xscreen>0</xscreen><yscreen>0</yscreen><sizeHorzCX>0</sizeHorzCX><sizeHorzCY>0</sizeHorzCY><sizeVertCX>122656</sizeVertCX><sizeVertCY>568314</sizeVertCY></Rect></Wnd5></Sizes></Row0></Right><Bottom><Row0><Sizes><Wnd2><Rect><Top>-2</Top><Left>-2</Left><Bottom>230</Bottom><Right>1282</Right><x>-2</x><y>-2</y><xscreen>1284</xscreen><yscreen>232</yscreen><sizeHorzCX>1003125</sizeHorzCX><sizeHorzCY>337209</sizeHorzCY><sizeVertCX>0</sizeVertCX><sizeVertCY>0</sizeVertCY></Rect></Wnd2></Sizes></Row0></Bottom><Float><Sizes/></Float></Positions>
+  </Desktop>
+</Project>
+
+

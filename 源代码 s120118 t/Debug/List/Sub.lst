@@ -1,0 +1,621 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V6.21.3.50641 for Atmel AVR        30/May/2018  14:28:53 #
+# Copyright 1996-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  G:\罗盘\源代码 s120118 t\src\Sub.c                       #
+#    Command line =  "G:\罗盘\源代码 s120118 t\src\Sub.c" --cpu=m88 -ms -o    #
+#                    "G:\罗盘\源代码 s120118 t\Debug\Obj\" -lCN               #
+#                    "G:\罗盘\源代码 s120118 t\Debug\List\"                   #
+#                    --initializers_in_flash --no_inline --no_cross_call      #
+#                    --no_tbaa --debug -DENABLE_BIT_DEFINITIONS -e            #
+#                    --eeprom_size 512 --clib -Om                             #
+#    List file    =  G:\罗盘\源代码 s120118 t\Debug\List\Sub.lst              #
+#    Object file  =  G:\罗盘\源代码 s120118 t\Debug\Obj\Sub.r90               #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+G:\罗盘\源代码 s120118 t\src\Sub.c
+      1          
+      2          /*******************************Copyright (c)***************************/
+      3          /*
+      4           *                         深圳铭之光电子技术有限公司
+      5           *                         工　　　　　程　　　　　部
+      6           *                         http://www.sinocomopto.com
+      7           */
+      8          /***********************************************************************/
+      9          #include  "_Include.h"
+
+   \                                 In  segment ABSOLUTE, at 0x66
+   \   union <unnamed> volatile __io _A_OSCCAL
+   \                     _A_OSCCAL:
+   \   00000000                      DS8 1
+     10          /***********************************************************************/
+     11          /*
+     12           *功能：
+     13           *入口：
+     14           *出口：
+     15           *备注：
+     16           *函数性质：
+     17           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     18          void Cmd_SprintWord (int16u val)
+   \                     Cmd_SprintWord:
+     19          {
+     20          	TxBuf[1]=val&0xFF;
+   \   00000000   2F20               MOV     R18, R16
+   \   00000002   9320....           STS     (TxBuf + 1), R18
+     21          	val>>=8;
+     22          	TxBuf[0]=val&0xFF;
+   \   00000006   2F01               MOV     R16, R17
+   \   00000008   9300....           STS     TxBuf, R16
+     23          }
+   \   0000000C   9508               RET
+     24          
+     25          /*
+     26           *功能：
+     27           *入口：
+     28           *出口：
+     29           *备注：
+     30           *函数性质：
+     31           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     32          void Cmd_SprintLong (int32u val)
+   \                     Cmd_SprintLong:
+     33          {
+     34          	TxBuf[2]=val&0xFF;
+   \   00000000   ....               LDI     R30, LOW(TxBuf)
+   \   00000002   ....               LDI     R31, (TxBuf) >> 8
+   \   00000004   01A8               MOVW    R21:R20, R17:R16
+   \   00000006   8342               STD     Z+2, R20
+     35          	val>>=8;
+   \   00000008   2F12               MOV     R17, R18
+     36          	TxBuf[1]=val&0xFF;
+   \   0000000A   8351               STD     Z+1, R21
+     37          	val>>=8;
+     38          	TxBuf[0]=val&0xFF;
+   \   0000000C   8310               ST      Z, R17
+     39          }
+   \   0000000E   9508               RET
+     40          
+     41          /*
+     42           *功能：
+     43           *入口：
+     44           *出口：
+     45           *备注：
+     46           *函数性质：
+     47           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     48          void Flash_LongWr (int8u addr,int32u val)
+   \                     Flash_LongWr:
+     49          {	int8u temp0 = val >> 16;
+   \   00000000   ....               RCALL   ?PROLOGUE4_L09
+   \   00000002   2FE0               MOV     R30, R16
+   \   00000004   01CA               MOVW    R25:R24, R21:R20
+   \   00000006   01DB               MOVW    R27:R26, R23:R22
+     50          	int8u temp1 = val >> 8;
+     51          	int8u temp2 = val;
+     52          	
+     53          	
+     54          	__EEPUT(addr++,temp0);
+   \   00000008   019D               MOVW    R19:R18, R27:R26
+   \   0000000A   2F02               MOV     R16, R18
+   \   0000000C   2F4E               MOV     R20, R30
+   \   0000000E   E050               LDI     R21, 0
+   \   00000010   ....               RCALL   __eeput8_16
+   \   00000012   95E3               INC     R30
+     55          	__EEPUT(addr++,temp1);
+   \   00000014   018C               MOVW    R17:R16, R25:R24
+   \   00000016   2F01               MOV     R16, R17
+   \   00000018   2F4E               MOV     R20, R30
+   \   0000001A   E050               LDI     R21, 0
+   \   0000001C   ....               RCALL   __eeput8_16
+     56          	__EEPUT(addr  ,temp2);
+   \   0000001E   2F08               MOV     R16, R24
+   \   00000020   95E3               INC     R30
+   \   00000022   2F4E               MOV     R20, R30
+   \   00000024   E050               LDI     R21, 0
+   \   00000026   ....               RCALL   __eeput8_16
+     57          }
+   \   00000028   E0E4               LDI     R30, 4
+   \   0000002A   ....               RJMP    ?EPILOGUE_B4_L09
+     58          
+     59          /*
+     60           *功能：
+     61           *入口：
+     62           *出口：
+     63           *备注：
+     64           *函数性质：
+     65           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     66          int32u Flash_LongRd (int8u addr)
+   \                     Flash_LongRd:
+     67          {	int32u val;
+   \   00000000   2F40               MOV     R20, R16
+     68          	int8u  temp;
+     69          	
+     70          	
+     71          	__EEGET(temp,addr++);
+   \   00000002   E050               LDI     R21, 0
+   \   00000004   ....               RCALL   __eeget8_16
+   \   00000006   9543               INC     R20
+     72          	val = temp;
+     73          	__EEGET(temp,addr++);
+     74          	val <<= 8;
+     75          	val |= temp;
+     76          	__EEGET(temp,addr  );
+     77          	val <<= 8;
+     78          	val |= temp;
+     79          	return val;
+   \   00000008   2E00               MOV     R0, R16
+   \   0000000A   2C10               MOV     R1, R0
+   \   0000000C   2400               CLR     R0
+   \   0000000E   E050               LDI     R21, 0
+   \   00000010   ....               RCALL   __eeget8_16
+   \   00000012   2A00               OR      R0, R16
+   \   00000014   2433               CLR     R3
+   \   00000016   2C21               MOV     R2, R1
+   \   00000018   2C10               MOV     R1, R0
+   \   0000001A   2400               CLR     R0
+   \   0000001C   9543               INC     R20
+   \   0000001E   E050               LDI     R21, 0
+   \   00000020   ....               RCALL   __eeget8_16
+   \   00000022   2A00               OR      R0, R16
+   \   00000024   0180               MOVW    R17:R16, R1:R0
+   \   00000026   0191               MOVW    R19:R18, R3:R2
+   \   00000028   9508               RET
+     80          }
+     81          
+     82          /*
+     83           *功能：
+     84           *入口：
+     85           *出口：
+     86           *备注：
+     87           *函数性质：
+     88           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     89          void Flash_WordWr (int8u addr,int16u val)
+   \                     Flash_WordWr:
+     90          {	int8u temp0 = val >> 8;
+   \   00000000   2F40               MOV     R20, R16
+     91          	int8u temp1 = val;
+     92          	
+     93          	
+     94          	__EEPUT(addr++,temp0);
+   \   00000002   0189               MOVW    R17:R16, R19:R18
+   \   00000004   2F01               MOV     R16, R17
+   \   00000006   E050               LDI     R21, 0
+   \   00000008   ....               RCALL   __eeput8_16
+     95          	__EEPUT(addr,temp1);
+   \   0000000A   2F02               MOV     R16, R18
+   \   0000000C   9543               INC     R20
+   \   0000000E   E050               LDI     R21, 0
+   \   00000010   ....               RCALL   __eeput8_16
+     96          }
+   \   00000012   9508               RET
+     97          
+     98          /*
+     99           *功能：
+    100           *入口：
+    101           *出口：
+    102           *备注：
+    103           *函数性质：
+    104           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    105          int16u Flash_WordRd (int8u addr)
+   \                     Flash_WordRd:
+    106          {	int16u val;
+   \   00000000   2F40               MOV     R20, R16
+    107          	int8u temp;
+    108          	
+    109          	
+    110          	__EEGET(temp,addr++);
+    111          	val = temp;
+    112          	__EEGET(temp,addr  );
+    113          	val <<= 8;
+    114          	val |= temp;
+    115          	return val;
+   \   00000002   E050               LDI     R21, 0
+   \   00000004   ....               RCALL   __eeget8_16
+   \   00000006   2F30               MOV     R19, R16
+   \   00000008   E020               LDI     R18, 0
+   \   0000000A   9543               INC     R20
+   \   0000000C   E050               LDI     R21, 0
+   \   0000000E   ....               RCALL   __eeget8_16
+   \   00000010   2B20               OR      R18, R16
+   \   00000012   0189               MOVW    R17:R16, R19:R18
+   \   00000014   9508               RET
+    116          }
+    117          
+    118          /*
+    119           *功能：
+    120           *入口：
+    121           *出口：
+    122           *备注：
+    123           *函数性质：
+    124           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    125          void Flash_ByteWr (int8u addr,int8u val)
+   \                     Flash_ByteWr:
+    126          {
+    127          	__EEPUT(addr,val);
+   \   00000000   2F40               MOV     R20, R16
+   \   00000002   E050               LDI     R21, 0
+   \   00000004   2F01               MOV     R16, R17
+   \   00000006   ....               RCALL   __eeput8_16
+    128          }
+   \   00000008   9508               RET
+    129          
+    130          /*
+    131           *功能：
+    132           *入口：
+    133           *出口：
+    134           *备注：
+    135           *函数性质：
+    136           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    137          int8u Flash_ByteRd (int8u addr)
+   \                     Flash_ByteRd:
+    138          {	int8u temp;
+    139          	
+    140          	
+    141          	__EEGET(temp,addr);
+    142          	return temp;
+   \   00000000   2F40               MOV     R20, R16
+   \   00000002   E050               LDI     R21, 0
+   \   00000004   ....               RCALL   __eeget8_16
+   \   00000006   9508               RET
+    143          }
+    144          
+    145          #define		FLASH_DATA_CHK		0x30
+    146          /*
+    147           *功能：
+    148           *入口：
+    149           *出口：
+    150           *备注：
+    151           *函数性质：
+    152           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    153          void Flash_DataUpdata (void)
+   \                     Flash_DataUpdata:
+    154          {
+    155          	Flash_WordWr(0x30,XMax);
+   \   00000000   9120....           LDS     R18, XMax
+   \   00000004   9130....           LDS     R19, (XMax + 1)
+   \   00000008   E300               LDI     R16, 48
+   \   0000000A   ....               RCALL   Flash_WordWr
+    156          	Flash_WordWr(0x32,XMin);
+   \   0000000C   9120....           LDS     R18, XMin
+   \   00000010   9130....           LDS     R19, (XMin + 1)
+   \   00000014   E302               LDI     R16, 50
+   \   00000016   ....               RCALL   Flash_WordWr
+    157          	Flash_WordWr(0x34,YMax);
+   \   00000018   9120....           LDS     R18, YMax
+   \   0000001C   9130....           LDS     R19, (YMax + 1)
+   \   00000020   E304               LDI     R16, 52
+   \   00000022   ....               RCALL   Flash_WordWr
+    158          	Flash_WordWr(0x36,YMin);
+   \   00000024   9120....           LDS     R18, YMin
+   \   00000028   9130....           LDS     R19, (YMin + 1)
+   \   0000002C   E306               LDI     R16, 54
+   \   0000002E   ....               RCALL   Flash_WordWr
+    159          	Flash_WordWr(0x38,XAtYMin);
+   \   00000030   9120....           LDS     R18, XAtYMin
+   \   00000034   9130....           LDS     R19, (XAtYMin + 1)
+   \   00000038   E308               LDI     R16, 56
+   \   0000003A   ....               RCALL   Flash_WordWr
+    160          	Flash_WordWr(0x3A,XAtYMax);
+   \   0000003C   9120....           LDS     R18, XAtYMax
+   \   00000040   9130....           LDS     R19, (XAtYMax + 1)
+   \   00000044   E30A               LDI     R16, 58
+   \   00000046   ....               RCALL   Flash_WordWr
+    161          	Flash_WordWr(0x40,CompOffset);
+   \   00000048   9120....           LDS     R18, CompOffset
+   \   0000004C   9130....           LDS     R19, (CompOffset + 1)
+   \   00000050   E400               LDI     R16, 64
+   \   00000052   ....               RCALL   Flash_WordWr
+    162          	Flash_WordWr(0x24,BaroOffset);
+   \   00000054   9120....           LDS     R18, BaroOffset
+   \   00000058   9130....           LDS     R19, (BaroOffset + 1)
+   \   0000005C   E204               LDI     R16, 36
+   \   0000005E   ....               RCALL   Flash_WordWr
+    163          	Flash_LongWr(0x20,SeaLevel);
+   \   00000060   ....               LDI     R30, LOW(SeaLevel)
+   \   00000062   ....               LDI     R31, (SeaLevel) >> 8
+   \   00000064   8140               LD      R20, Z
+   \   00000066   8151               LDD     R21, Z+1
+   \   00000068   8162               LDD     R22, Z+2
+   \   0000006A   8173               LDD     R23, Z+3
+   \   0000006C   E200               LDI     R16, 32
+   \   0000006E   ....               RCALL   Flash_LongWr
+    164          	
+    165          	Flash_ByteWr(0x3C,FLASH_DATA_CHK);
+   \   00000070   E310               LDI     R17, 48
+   \   00000072   E30C               LDI     R16, 60
+   \   00000074   ....               RCALL   Flash_ByteWr
+    166          	delay_ms(10);
+   \   00000076   E00A               LDI     R16, 10
+   \   00000078   E010               LDI     R17, 0
+   \   0000007A   ....               RCALL   delay_ms
+    167          }
+   \   0000007C   9508               RET
+    168          
+    169          /*
+    170           *功能：
+    171           *入口：
+    172           *出口：
+    173           *备注：
+    174           *函数性质：
+    175           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    176          void Flash_DataInit (void)
+   \                     Flash_DataInit:
+    177          {
+    178          	if(FLASH_DATA_CHK!=Flash_ByteRd(0x3C))
+   \   00000000   E30C               LDI     R16, 60
+   \   00000002   ....               RCALL   Flash_ByteRd
+   \   00000004   3300               CPI     R16, 48
+   \   00000006   F1A9               BREQ    ??Flash_DataInit_0
+    179          	{	XMax = -1000;
+   \   00000008   E108               LDI     R16, 24
+   \   0000000A   EF1C               LDI     R17, 252
+   \   0000000C   9300....           STS     XMax, R16
+   \   00000010   9310....           STS     (XMax + 1), R17
+    180          		XMin =  1000;
+   \   00000014   EE08               LDI     R16, 232
+   \   00000016   E013               LDI     R17, 3
+   \   00000018   9300....           STS     XMin, R16
+   \   0000001C   9310....           STS     (XMin + 1), R17
+    181          		YMax = -1000;
+   \   00000020   E108               LDI     R16, 24
+   \   00000022   EF1C               LDI     R17, 252
+   \   00000024   9300....           STS     YMax, R16
+   \   00000028   9310....           STS     (YMax + 1), R17
+    182          		YMin =  1000;
+   \   0000002C   EE08               LDI     R16, 232
+   \   0000002E   E013               LDI     R17, 3
+   \   00000030   9300....           STS     YMin, R16
+   \   00000034   9310....           STS     (YMin + 1), R17
+    183          		XAtYMin    = 0;
+   \   00000038   E000               LDI     R16, 0
+   \   0000003A   9300....           STS     XAtYMin, R16
+   \   0000003E   9300....           STS     (XAtYMin + 1), R16
+    184          		XAtYMax    = 0;
+   \   00000042   9300....           STS     XAtYMax, R16
+   \   00000046   9300....           STS     (XAtYMax + 1), R16
+    185          		CompOffset = 0;
+   \   0000004A   9300....           STS     CompOffset, R16
+   \   0000004E   9300....           STS     (CompOffset + 1), R16
+    186          		BaroOffset = 0;
+   \   00000052   9300....           STS     BaroOffset, R16
+   \   00000056   9300....           STS     (BaroOffset + 1), R16
+    187          		SeaLevel   = 101325;
+   \   0000005A   EC0D               LDI     R16, 205
+   \   0000005C   E81B               LDI     R17, 139
+   \   0000005E   E021               LDI     R18, 1
+   \   00000060   E030               LDI     R19, 0
+   \   00000062   ....               LDI     R30, LOW(SeaLevel)
+   \   00000064   ....               LDI     R31, (SeaLevel) >> 8
+   \   00000066   8300               ST      Z, R16
+   \   00000068   8311               STD     Z+1, R17
+   \   0000006A   8322               STD     Z+2, R18
+   \   0000006C   8333               STD     Z+3, R19
+    188          		
+    189          		Flash_DataUpdata();
+   \   0000006E   ....               RCALL   Flash_DataUpdata
+   \   00000070   C038               RJMP    ??Flash_DataInit_1
+    190          	}
+    191          	else
+    192          	{	XMax = Flash_WordRd(0x30);
+   \                     ??Flash_DataInit_0:
+   \   00000072   E300               LDI     R16, 48
+   \   00000074   ....               RCALL   Flash_WordRd
+   \   00000076   9300....           STS     XMax, R16
+   \   0000007A   9310....           STS     (XMax + 1), R17
+    193          		XMin = Flash_WordRd(0x32);
+   \   0000007E   E302               LDI     R16, 50
+   \   00000080   ....               RCALL   Flash_WordRd
+   \   00000082   9300....           STS     XMin, R16
+   \   00000086   9310....           STS     (XMin + 1), R17
+    194          		YMax = Flash_WordRd(0x34);
+   \   0000008A   E304               LDI     R16, 52
+   \   0000008C   ....               RCALL   Flash_WordRd
+   \   0000008E   9300....           STS     YMax, R16
+   \   00000092   9310....           STS     (YMax + 1), R17
+    195          		YMin = Flash_WordRd(0x36);
+   \   00000096   E306               LDI     R16, 54
+   \   00000098   ....               RCALL   Flash_WordRd
+   \   0000009A   9300....           STS     YMin, R16
+   \   0000009E   9310....           STS     (YMin + 1), R17
+    196          		XAtYMin = Flash_WordRd(0x38);
+   \   000000A2   E308               LDI     R16, 56
+   \   000000A4   ....               RCALL   Flash_WordRd
+   \   000000A6   9300....           STS     XAtYMin, R16
+   \   000000AA   9310....           STS     (XAtYMin + 1), R17
+    197          		XAtYMax = Flash_WordRd(0x3A);
+   \   000000AE   E30A               LDI     R16, 58
+   \   000000B0   ....               RCALL   Flash_WordRd
+   \   000000B2   9300....           STS     XAtYMax, R16
+   \   000000B6   9310....           STS     (XAtYMax + 1), R17
+    198          		CompOffset = Flash_WordRd(0x40);
+   \   000000BA   E400               LDI     R16, 64
+   \   000000BC   ....               RCALL   Flash_WordRd
+   \   000000BE   9300....           STS     CompOffset, R16
+   \   000000C2   9310....           STS     (CompOffset + 1), R17
+    199          		BaroOffset=Flash_WordRd(0x24);
+   \   000000C6   E204               LDI     R16, 36
+   \   000000C8   ....               RCALL   Flash_WordRd
+   \   000000CA   9300....           STS     BaroOffset, R16
+   \   000000CE   9310....           STS     (BaroOffset + 1), R17
+    200          		SeaLevel  =Flash_LongRd(0x20);
+   \   000000D2   E200               LDI     R16, 32
+   \   000000D4   ....               RCALL   Flash_LongRd
+   \   000000D6   ....               LDI     R30, LOW(SeaLevel)
+   \   000000D8   ....               LDI     R31, (SeaLevel) >> 8
+   \   000000DA   8300               ST      Z, R16
+   \   000000DC   8311               STD     Z+1, R17
+   \   000000DE   8322               STD     Z+2, R18
+   \   000000E0   8333               STD     Z+3, R19
+    201          	}
+    202          	Comp_CalPrmtCnt();
+   \                     ??Flash_DataInit_1:
+   \   000000E2   ....               RCALL   Comp_CalPrmtCnt
+    203          }
+   \   000000E4   9508               RET
+    204          
+    205          
+    206          
+    207          #ifdef 	MAIN_INIT
+    208          	#define		SCP_0X29_CHK		0x31
+    209          	#define		SCP_0X2A_CHK		0x32
+    210          	#define		SCP_0X2B_CHK		0x33
+    211          	#define		SCP_0X2C_CHK		0x34
+    212          	#define		OSC_OFFSET			0x0
+    213          #else
+    214          	#define		SCP_0X29_CHK		0x81
+    215          	#define		SCP_0X2A_CHK		0x82
+    216          	#define		SCP_0X2B_CHK		0x83
+    217          	#define		SCP_0X2C_CHK		0x84
+    218          	#define		OSC_OFFSET			0x0
+    219          #endif
+    220          
+    221          /*
+    222           *功能：
+    223           *入口：
+    224           *出口：
+    225           *备注：
+    226           *函数性质：
+    227           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    228          void Main_SysInit (void)
+   \                     Main_SysInit:
+    229          {	
+    230            int8u temp;
+    231          	
+    232          	
+    233          	temp=OSCCAL+OSC_OFFSET;	Flash_ByteWr(0x2E,temp);
+   \   00000000   9110....           LDS     R17, _A_OSCCAL
+   \   00000004   E20E               LDI     R16, 46
+   \   00000006   ....               RCALL   Flash_ByteWr
+    234          	Scp_FlashByteWr(0x29,SCP_0X29_CHK);
+   \   00000008   E811               LDI     R17, 129
+   \   0000000A   E209               LDI     R16, 41
+   \   0000000C   ....               RCALL   Scp_FlashByteWr
+    235          	Scp_FlashByteWr(0x2A,SCP_0X2A_CHK);
+   \   0000000E   E812               LDI     R17, 130
+   \   00000010   E20A               LDI     R16, 42
+   \   00000012   ....               RCALL   Scp_FlashByteWr
+    236          	Scp_FlashByteWr(0x2B,SCP_0X2B_CHK);
+   \   00000014   E813               LDI     R17, 131
+   \   00000016   E20B               LDI     R16, 43
+   \   00000018   ....               RCALL   Scp_FlashByteWr
+    237          	Scp_FlashByteWr(0x2C,SCP_0X2C_CHK);
+   \   0000001A   E814               LDI     R17, 132
+   \   0000001C   E20C               LDI     R16, 44
+   \   0000001E   ....               RCALL   Scp_FlashByteWr
+    238          }
+   \   00000020   9508               RET
+   \   00000022                      REQUIRE _A_OSCCAL
+    239          
+    240          /*
+    241           *功能：
+    242           *入口：
+    243           *出口：
+    244           *备注：
+    245           *函数性质：
+    246           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    247          int8u Main_SysInitChk(void)
+   \                     Main_SysInitChk:
+    248          {	int8u temp;
+    249          	
+    250          	
+    251          	temp=Flash_ByteRd(0x2E);	if(temp!=OSCCAL+OSC_OFFSET)return 0;
+   \   00000000   E20E               LDI     R16, 46
+   \   00000002   ....               RCALL   Flash_ByteRd
+   \   00000004   9110....           LDS     R17, _A_OSCCAL
+   \   00000008   1701               CP      R16, R17
+   \   0000000A   F011               BREQ    ??Main_SysInitChk_0
+   \   0000000C   E000               LDI     R16, 0
+   \   0000000E   9508               RET
+    252          	//temp=Scp_FlashByteRd(0x29);	if(temp!=SCP_0X29_CHK)return 0;
+    253          	//temp=Scp_FlashByteRd(0x2A);	if(temp!=SCP_0X2A_CHK)return 0;
+    254          	//temp=Scp_FlashByteRd(0x2B);	if(temp!=SCP_0X2B_CHK)return 0;
+    255          	//temp=Scp_FlashByteRd(0x2C);	if(temp!=SCP_0X2C_CHK)return 0;
+    256          	return 1;
+   \                     ??Main_SysInitChk_0:
+   \   00000010   E001               LDI     R16, 1
+   \   00000012   9508               RET
+   \   00000014                      REQUIRE _A_OSCCAL
+    257          }
+
+   Maximum stack usage in bytes:
+
+   CSTACK RSTACK Function
+   ------ ------ --------
+      0      2   Cmd_SprintLong
+      0      2   Cmd_SprintWord
+      0      4   Flash_ByteRd
+      0      4   Flash_ByteWr
+      0      2   Flash_DataInit
+        0      2   -> Comp_CalPrmtCnt
+        0      2   -> Flash_ByteRd
+        0      2   -> Flash_DataUpdata
+        0      2   -> Flash_LongRd
+        0      2   -> Flash_WordRd
+      0      2   Flash_DataUpdata
+        0      2   -> Flash_ByteWr
+        0      2   -> Flash_LongWr
+        0      2   -> Flash_WordWr
+        0      2   -> delay_ms
+      0      4   Flash_LongRd
+      4      4   Flash_LongWr
+      0      4   Flash_WordRd
+      0      4   Flash_WordWr
+      0      2   Main_SysInit
+        0      2   -> Flash_ByteWr
+        0      2   -> Scp_FlashByteWr
+      0      2   Main_SysInitChk
+        0      2   -> Flash_ByteRd
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      16  Cmd_SprintLong
+      14  Cmd_SprintWord
+       8  Flash_ByteRd
+      10  Flash_ByteWr
+     230  Flash_DataInit
+     126  Flash_DataUpdata
+      42  Flash_LongRd
+      44  Flash_LongWr
+      22  Flash_WordRd
+      20  Flash_WordWr
+      34  Main_SysInit
+      20  Main_SysInitChk
+       1  _A_OSCCAL
+
+ 
+   1 byte  in segment ABSOLUTE
+ 586 bytes in segment CODE
+ 
+ 586 bytes of CODE memory
+   0 bytes of DATA memory (+ 1 byte shared)
+
+Errors: none
+Warnings: none

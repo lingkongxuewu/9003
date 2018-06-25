@@ -1,0 +1,275 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V6.21.3.50641 for Atmel AVR        30/May/2018  14:28:52 #
+# Copyright 1996-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  G:\罗盘\源代码 s120118 t\src\Cmd.c                       #
+#    Command line =  "G:\罗盘\源代码 s120118 t\src\Cmd.c" --cpu=m88 -ms -o    #
+#                    "G:\罗盘\源代码 s120118 t\Debug\Obj\" -lCN               #
+#                    "G:\罗盘\源代码 s120118 t\Debug\List\"                   #
+#                    --initializers_in_flash --no_inline --no_cross_call      #
+#                    --no_tbaa --debug -DENABLE_BIT_DEFINITIONS -e            #
+#                    --eeprom_size 512 --clib -Om                             #
+#    List file    =  G:\罗盘\源代码 s120118 t\Debug\List\Cmd.lst              #
+#    Object file  =  G:\罗盘\源代码 s120118 t\Debug\Obj\Cmd.r90               #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+G:\罗盘\源代码 s120118 t\src\Cmd.c
+      1          
+      2          /*******************************Copyright (c)***************************/
+      3          /*
+      4           *                         深圳铭之光电子技术有限公司
+      5           *                         工　　　　　程　　　　　部
+      6           *                         http://www.sinocomopto.com
+      7           */
+      8          /***********************************************************************/
+      9          #define  __CMD_C__
+     10          #include  "_Include.h"
+     11          /***********************************************************************/
+     12          
+     13          /*
+     14           *功能：
+     15           *入口：
+     16           *出口：
+     17           *备注：
+     18           *函数性质：
+     19           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     20          void Twi_CmdDeal(int8u* buf)
+   \                     Twi_CmdDeal:
+     21          {	int8u cmd;
+     22          	
+     23          	
+     24          	cmd = buf[0];
+     25          	switch(cmd)
+   \   00000000   01F8               MOVW    R31:R30, R17:R16
+   \   00000002   8120               LD      R18, Z
+   \   00000004   5C20               SUBI    R18, 192
+   \   00000006   F049               BREQ    ??Twi_CmdDeal_0
+   \   00000008   5120               SUBI    R18, 16
+   \   0000000A   F0B1               BREQ    ??Twi_CmdDeal_1
+   \   0000000C   952A               DEC     R18
+   \   0000000E   F051               BREQ    ??Twi_CmdDeal_2
+   \   00000010   502F               SUBI    R18, 15
+   \   00000012   F131               BREQ    ??Twi_CmdDeal_3
+   \   00000014   5025               SUBI    R18, 5
+   \   00000016   F169               BREQ    ??Twi_CmdDeal_4
+   \   00000018   9508               RET
+     26          	{
+     27                    /*
+     28          		case ALTI_RD:				//ok
+     29          			if(AltiVal>=0)
+     30          				Cmd_SprintLong(AltiVal);
+     31          			else
+     32          			{	Cmd_SprintLong(-AltiVal);
+     33          				TxBuf[0]|=0x80;
+     34          			}
+     35          			Twi_TransceiverStaWithData(TxBuf,3);
+     36          			break;
+     37          		case BARO_RD:
+     38          			Cmd_SprintLong(BaroVal);
+     39          			Twi_TransceiverStaWithData(TxBuf,3);
+     40          			break;
+     41                    */
+     42          		case COMP_RD:
+     43          			Cmd_SprintWord(CompVal);
+   \                     ??Twi_CmdDeal_0:
+   \   0000001A   9100....           LDS     R16, CompVal
+   \   0000001E   9110....           LDS     R17, (CompVal + 1)
+   \   00000022   C004               RJMP    ??Twi_CmdDeal_5
+     44          			Twi_TransceiverStaWithData(TxBuf,2);
+     45          			break;
+     46                     /*
+     47          		case TEMP_RD:
+     48          			if(TempVal>=0)
+     49          				Cmd_SprintWord(TempVal);
+     50          			else
+     51          			{	Cmd_SprintWord(-TempVal);
+     52          				TxBuf[0]|=0x80;
+     53          			}
+     54          			Twi_TransceiverStaWithData(TxBuf,2);
+     55          			break;
+     56                    */
+     57          		case COMP_OFFSET_RD:
+     58          			Cmd_SprintWord(CompOffset);
+   \                     ??Twi_CmdDeal_2:
+   \   00000024   9100....           LDS     R16, CompOffset
+   \   00000028   9110....           LDS     R17, (CompOffset + 1)
+   \                     ??Twi_CmdDeal_5:
+   \   0000002C   ....               RCALL   Cmd_SprintWord
+     59          			Twi_TransceiverStaWithData(TxBuf,2);
+   \   0000002E   E022               LDI     R18, 2
+   \   00000030   ....               LDI     R16, LOW(TxBuf)
+   \   00000032   ....               LDI     R17, (TxBuf) >> 8
+   \   00000034   ....               RCALL   Twi_TransceiverStaWithData
+     60          			break;
+   \   00000036   9508               RET
+     61          	/*	case SEA_LEVEL_RD:
+     62          			Cmd_SprintLong(SeaLevel);
+     63          			Twi_TransceiverStaWithData(TxBuf,3);
+     64          			break;
+     65          		case BARO_OFFSET_RD:
+     66          			if(BaroOffset>=0)
+     67          				Cmd_SprintWord(BaroOffset);
+     68          			else
+     69          			{	Cmd_SprintWord(-BaroOffset);
+     70          				TxBuf[0]|=0x80;
+     71          			}
+     72          			Twi_TransceiverStaWithData(TxBuf,2);
+     73          			break;
+     74          			
+     75          			
+     76          		case SEA_LEVEL_WR:
+     77          			SeaLevel=((int32u)buf[1]<<16)+((int16u)buf[2]<<8)+buf[3];
+     78          			if(SeaLevel<30000 )SeaLevel=30000;
+     79          			if(SeaLevel>120000)SeaLevel=120000;
+     80          			Flash_DataUpdata();
+     81          			break;
+     82          		case BARO_OFFSET_WR:
+     83          			cmd=buf[1];//借用
+     84          			if((cmd&0x80)==0)
+     85          				BaroOffset=((int16u)cmd<<8)+buf[2];
+     86          			else
+     87          			{	cmd&=0x7F;
+     88          				BaroOffset=-(((int16u)cmd<<8)+buf[2]);
+     89          			}
+     90          			Flash_DataUpdata();
+     91          			break;                                          */
+     92          		case COMP_OFFSET_WR:
+     93          			CompOffset=((int16u)buf[1]<<8)+buf[2];
+   \                     ??Twi_CmdDeal_1:
+   \   00000038   8131               LDD     R19, Z+1
+   \   0000003A   8102               LDD     R16, Z+2
+   \   0000003C   9300....           STS     CompOffset, R16
+   \   00000040   9330....           STS     (CompOffset + 1), R19
+     94          			if(CompOffset>360)CompOffset=360;
+   \   00000044   9100....           LDS     R16, CompOffset
+   \   00000048   9110....           LDS     R17, (CompOffset + 1)
+   \   0000004C   3609               CPI     R16, 105
+   \   0000004E   E021               LDI     R18, 1
+   \   00000050   0712               CPC     R17, R18
+   \   00000052   F0B8               BRCS    ??Twi_CmdDeal_6
+   \   00000054   E608               LDI     R16, 104
+   \   00000056   9300....           STS     CompOffset, R16
+   \   0000005A   9320....           STS     (CompOffset + 1), R18
+     95          			Flash_DataUpdata();
+   \   0000005E   C011               RJMP    ??Twi_CmdDeal_6
+     96          			break;
+     97          			
+     98          			//	#define 				0xA3	//	*
+     99          	/*	case ALTI_WR:
+    100          			cmd=buf[1];//借用
+    101          			if((cmd&0x80)==0)
+    102          			{	AltiVal= (((int32u)cmd<<16)+((int16u)buf[2]<<8)+buf[3]);
+    103          			}
+    104          			else
+    105          			{	cmd&=0x7F;
+    106          				AltiVal=-(((int32u)cmd<<16)+((int16u)buf[2]<<8)+buf[3]);
+    107          			}
+    108          			SeaLevel = BaroVal+SEALEVEL_REF-Alti_High2Pres(AltiVal);
+    109          			Flash_DataUpdata();
+    110          	*/		break;
+    111          			//	#define 				0xA3	//	*
+    112          			
+    113          		case COMP_CAL_STA:
+    114          			TxBuf[0]=cmd;
+   \                     ??Twi_CmdDeal_3:
+   \   00000060   EE00               LDI     R16, 224
+   \   00000062   9300....           STS     TxBuf, R16
+    115          			Twi_TransceiverStaWithData(TxBuf,1);
+   \   00000066   E021               LDI     R18, 1
+   \   00000068   ....               LDI     R16, LOW(TxBuf)
+   \   0000006A   ....               LDI     R17, (TxBuf) >> 8
+   \   0000006C   ....               RCALL   Twi_TransceiverStaWithData
+    116          			Comp_CalInit();
+   \   0000006E   ....               RCALL   Comp_CalInit
+    117          			break;
+   \   00000070   9508               RET
+    118          		case COMP_CAL_STOP:
+    119          			TxBuf[0]=cmd;
+   \                     ??Twi_CmdDeal_4:
+   \   00000072   EE05               LDI     R16, 229
+   \   00000074   9300....           STS     TxBuf, R16
+    120          			Twi_TransceiverStaWithData(TxBuf,1);
+   \   00000078   E021               LDI     R18, 1
+   \   0000007A   ....               LDI     R16, LOW(TxBuf)
+   \   0000007C   ....               LDI     R17, (TxBuf) >> 8
+   \   0000007E   ....               RCALL   Twi_TransceiverStaWithData
+    121          			Comp_CalPrmtCnt();
+   \   00000080   ....               RCALL   Comp_CalPrmtCnt
+    122          			Flash_DataUpdata();
+   \                     ??Twi_CmdDeal_6:
+   \   00000082   ....               RCALL   Flash_DataUpdata
+    123          			break;
+    124                   /*
+    125          		case 0x65:
+    126          			LED1_ON();
+    127          			if(0==SysTag)
+    128          			{	Main_SysInit();
+    129          				SysTag=1;
+    130          			}
+    131          			delay_ms(300);
+    132          			LED1_OFF();
+    133          			break;
+    134          			
+    135          			
+    136          			
+    137          			
+    138          		case SCH9003_POW_ON:
+    139          			Scp_ReInit();
+    140          //			Comp_HardwareInit();
+    141          //			Init_PowerOn();
+    142          //			LED0_OUT();	LED1_OUT();
+    143          //			LED0_OFF();	LED1_OFF();
+    144          
+    145          			SysPowOnTag=1;
+    146          			break;
+    147          			
+    148          		case SCH9003_POW_OFF:
+    149          			Scp_PowDown();
+    150          //			
+    151          //			Init_GpioPort();
+    152          //			//Init_GpioPortRe();
+    153          //			//Comp_SpiEnd();
+    154          //			
+    155          //			Init_PowerOff();
+    156          			SysPowOnTag=0;
+    157          			__sleep();
+    158          			break;
+    159                                  
+    160                              */
+    161          			
+    162          	}
+    163          }
+   \   00000084   9508               RET
+    164          
+    165          
+
+   Maximum stack usage in bytes:
+
+   RSTACK Function
+   ------ --------
+      2   Twi_CmdDeal
+        2   -> Cmd_SprintWord
+        2   -> Comp_CalInit
+        2   -> Comp_CalPrmtCnt
+        2   -> Flash_DataUpdata
+        2   -> Twi_TransceiverStaWithData
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+     134  Twi_CmdDeal
+
+ 
+ 134 bytes in segment CODE
+ 
+ 134 bytes of CODE memory
+
+Errors: none
+Warnings: none

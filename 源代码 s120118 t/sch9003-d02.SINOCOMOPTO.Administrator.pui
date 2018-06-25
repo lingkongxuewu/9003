@@ -1,0 +1,41 @@
+[Open Files]
+Active File Display Mode=3
+Active File Index=4
+Open File Line0=0
+Open File Line1=3567
+Open File Line2=1297
+Open File Line3=0
+Open File Line4=1494
+Open File Line5=5447
+Open File Line6=1186
+Open File Line7=3164
+Open File Pos0=11052
+Open File Pos1=4747
+Open File Pos2=0
+Open File Pos3=75
+Open File Pos4=2130
+Open File Pos5=5509
+Open File Pos6=1677
+Open File Pos7=902
+Open File Window Pos0=0,1,-1,-1,-4,-30,0,0,703,370
+Open File Window Pos1=0,1,-1,-1,-4,-30,22,29,652,326
+Open File Window Pos2=0,1,-1,-1,-4,-30,44,58,674,355
+Open File Window Pos3=0,1,-1,-1,-4,-30,88,116,718,413
+Open File Window Pos4=2,3,-1,-1,-4,-30,44,58,674,355
+Open File Window Pos5=0,1,-1,-1,-4,-30,132,174,856,547
+Open File Window Pos6=0,1,-1,-1,-4,-30,66,87,790,460
+Open File Window Pos7=0,1,-1,-1,-4,-30,110,145,834,518
+Open File0=.\presdriver.c
+Open File1=.\compdriver.c
+Open File2=.\compass.c
+Open File3=.\TWI_slave.h
+Open File4=.\main.c
+Open File5=.\pressure.c
+Open File6=.\barometer.c
+Open File7=.\SysInit.c
+Open File8=
+Remember Files=1
+
+[Project Information]
+Project Start=D907080001001F0009002300290000005D
+Working Time=60972

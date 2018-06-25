@@ -1,0 +1,30 @@
+[Project ID]
+Signature=UE Proj: v.1
+[Project Information]
+Use Relative Directory=1
+Relative to Project File=1
+Include Sub Directories=1
+Project Tagfile=
+Project Wordfile=
+Filter=
+Create Tagfile=0
+[Files]
+0=src\TWI_slave.h
+1=src\altimeter.c
+2=src\altimeter.h
+3=src\barometer.c
+4=src\barometer.h
+5=src\compass.c
+6=src\compass.h
+7=src\compdriver.c
+8=src\compdriver.h
+9=src\delay.c
+10=src\delay.h
+11=src\main.c
+12=src\presdriver.c
+13=src\presdriver.h
+14=src\pressure.c
+15=src\pressure.h
+16=src\SysInit.c
+17=src\SysInit.h
+18=src\TWI_slave.c

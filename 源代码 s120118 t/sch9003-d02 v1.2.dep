@@ -1,0 +1,1121 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<project>
+  <fileVersion>2</fileVersion>
+  <fileChecksum>2572908285</fileChecksum>
+  <configuration>
+    <name>Debug</name>
+    <outputs>
+      <file>$PROJ_DIR$\Debug\Obj\BaroDrv.r90</file>
+      <file>$PROJ_DIR$\src\presdriver.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\stdio.h</file>
+      <file>$TOOLKIT_DIR$\inc\ina90.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\Baro.r90</file>
+      <file>$PROJ_DIR$\TWI_slave.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\SysInit.pbi</file>
+      <file>$PROJ_DIR$\Debug\List\delay.lst</file>
+      <file>$PROJ_DIR$\src\altimeter.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\sch9003-d02 v1.pbd</file>
+      <file>$PROJ_DIR$\src\Baro.h</file>
+      <file>$TOOLKIT_DIR$\src\template\cfgm88.xcl</file>
+      <file>$PROJ_DIR$\Debug\Exe\sch9003-d02 v1.2.d90</file>
+      <file>$PROJ_DIR$\Debug\List\barometer.lst</file>
+      <file>$PROJ_DIR$\src\compdriver.c</file>
+      <file>$PROJ_DIR$\compass.c</file>
+      <file>$PROJ_DIR$\src\Init.h</file>
+      <file>$PROJ_DIR$\src\BaroDrv.h</file>
+      <file>$PROJ_DIR$\src\Cmd.h</file>
+      <file>$PROJ_DIR$\src\altimeter.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\Cmd.pbi</file>
+      <file>$TOOLKIT_DIR$\lib\clib\cl1s-ec_mul.r90</file>
+      <file>$PROJ_DIR$\compdriver.c</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\src\CompDrv.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\TwiSlave.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\Main.r90</file>
+      <file>$PROJ_DIR$\delay.c</file>
+      <file>$PROJ_DIR$\src\Comp.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\Comp.r90</file>
+      <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
+      <file>$PROJ_DIR$\Debug\List\Comp.lst</file>
+      <file>$PROJ_DIR$\src\barometer.h</file>
+      <file>$PROJ_DIR$\Debug\List\Cmd.lst</file>
+      <file>$PROJ_DIR$\src\Main.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\compdriver.r90</file>
+      <file>$PROJ_DIR$\src\_Type.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\stdlib.h</file>
+      <file>$PROJ_DIR$\Debug\List\compdriver.lst</file>
+      <file>$PROJ_DIR$\src\Alti.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\pressure.r90</file>
+      <file>$TOOLKIT_DIR$\inc\iom88.h</file>
+      <file>$PROJ_DIR$\src\_Include.h</file>
+      <file>$PROJ_DIR$\src\CompDrv.c</file>
+      <file>$PROJ_DIR$\src\TWI_slave.h</file>
+      <file>$PROJ_DIR$\presdriver.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\BaroDrv.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\Sub.r90</file>
+      <file>$PROJ_DIR$\src\presdriver.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\compass.pbi</file>
+      <file>$PROJ_DIR$\Debug\List\pressure.lst</file>
+      <file>$PROJ_DIR$\Debug\List\Baro.lst</file>
+      <file>$PROJ_DIR$\Debug\List\TwiSlave.lst</file>
+      <file>$PROJ_DIR$\Debug\List\presdriver.lst</file>
+      <file>$PROJ_DIR$\src\barometer.c</file>
+      <file>$TOOLKIT_DIR$\src\template\cfg1soim.xcl</file>
+      <file>$PROJ_DIR$\Debug\Obj\Alti.pbi</file>
+      <file>$PROJ_DIR$\Debug\List\TWI_slave.lst</file>
+      <file>$PROJ_DIR$\Debug\Obj\Main.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\Comp.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\TwiSlave.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\Cmd.r90</file>
+      <file>$TOOLKIT_DIR$\inc\clib\math.h</file>
+      <file>$PROJ_DIR$\Debug\List\Main.lst</file>
+      <file>$PROJ_DIR$\Debug\Obj\presdriver.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\compdriver.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\SysInit.r90</file>
+      <file>$TOOLKIT_DIR$\inc\clib\string.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\delay.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\Init.pbi</file>
+      <file>$PROJ_DIR$\altimeter.c</file>
+      <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
+      <file>$PROJ_DIR$\altimeter.h</file>
+      <file>$PROJ_DIR$\delay.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\delay.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\CompDrv.r90</file>
+      <file>$PROJ_DIR$\Debug\List\altimeter.lst</file>
+      <file>$PROJ_DIR$\Debug\Obj\compass.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\Init.r90</file>
+      <file>$PROJ_DIR$\src\pressure.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\TWI_slave.r90</file>
+      <file>$PROJ_DIR$\Debug\Exe\sch9003-d02 v1.2.hex</file>
+      <file>$PROJ_DIR$\Debug\Exe\sch9003-d02 v1.2.a90</file>
+      <file>$PROJ_DIR$\src\Sub.h</file>
+      <file>$PROJ_DIR$\pressure.h</file>
+      <file>$TOOLKIT_DIR$\inc\inavr.h</file>
+      <file>$PROJ_DIR$\src\compdriver.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\barometer.pbi</file>
+      <file>$PROJ_DIR$\Debug\Obj\presdriver.r90</file>
+      <file>$PROJ_DIR$\Debug\Obj\pressure.pbi</file>
+      <file>$PROJ_DIR$\Debug\List\Init.lst</file>
+      <file>$PROJ_DIR$\Debug\Obj\Alti.r90</file>
+      <file>$PROJ_DIR$\src\SysInit.h</file>
+      <file>$PROJ_DIR$\Debug\List\Alti.lst</file>
+      <file>$PROJ_DIR$\Debug\List\BaroDrv.lst</file>
+      <file>$PROJ_DIR$\Debug\List\SysInit.lst</file>
+      <file>$PROJ_DIR$\SysInit.c</file>
+      <file>$PROJ_DIR$\src\Main.c</file>
+      <file>$PROJ_DIR$\src\delay.c</file>
+      <file>$TOOLKIT_DIR$\inc\bitdefinitions\iom88.inc</file>
+      <file>$PROJ_DIR$\compdriver.h</file>
+      <file>$PROJ_DIR$\src\compass.c</file>
+      <file>$PROJ_DIR$\src\Cmd.c</file>
+      <file>$PROJ_DIR$\src\Sub.c</file>
+      <file>$PROJ_DIR$\src\Alti.c</file>
+      <file>$PROJ_DIR$\src\TwiSlave.c</file>
+      <file>$PROJ_DIR$\src\Comp.c</file>
+      <file>$PROJ_DIR$\src\Baro.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\barometer.r90</file>
+      <file>$PROJ_DIR$\src\BaroDrv.c</file>
+      <file>$PROJ_DIR$\src\Init.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\altimeter.r90</file>
+      <file>$PROJ_DIR$\Debug\List\Sub.lst</file>
+      <file>$PROJ_DIR$\presdriver.h</file>
+      <file>$PROJ_DIR$\src\SysInit.c</file>
+      <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
+      <file>$PROJ_DIR$\src\_Const.h</file>
+      <file>$PROJ_DIR$\barometer.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\stdarg.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\TWI_slave.pbi</file>
+      <file>$PROJ_DIR$\pressure.c</file>
+      <file>$PROJ_DIR$\Debug\Obj\CompDrv.pbi</file>
+      <file>$TOOLKIT_DIR$\inc\comp_a90.h</file>
+      <file>$PROJ_DIR$\src\TWI_slave.c</file>
+      <file>$PROJ_DIR$\src\delay.h</file>
+      <file>$PROJ_DIR$\compass.h</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\barometer.c</file>
+      <file>$PROJ_DIR$\Debug\List\compass.lst</file>
+      <file>$TOOLKIT_DIR$\inc\clib\float.h</file>
+      <file>$PROJ_DIR$\SysInit.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\altimeter.pbi</file>
+      <file>$PROJ_DIR$\src\TwiSlave.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\Sub.pbi</file>
+      <file>$PROJ_DIR$\TWI_slave.h</file>
+      <file>$PROJ_DIR$\src\compass.h</file>
+      <file>$PROJ_DIR$\Debug\Obj\Baro.pbi</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\TWI_slave.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 119</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 80 57</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 71 41 115 85 126 134</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 12 82</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\sch9003-d02 v1.2.d90</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 82</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 11 55 91 4 0 61 29 78 26 47 25 68 21</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\compdriver.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 65</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 35 38</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 92 39 28 24</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 92 39 28 24</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\compass.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 77 128</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 3 85 126 122 71 41 115 62 30 129 100 125</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\altimeter.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 131</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 111 76</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 92 39 135 86</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 92 39 135 86</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\compdriver.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 65</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 35 38</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 3 85 126 122 71 41 115 100</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 58</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 26 63</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 3 85 126 122 71 41 115 62 30 134 73 130 72 117 125 100 113 84</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\delay.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 74</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 68 7</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 3 85 126 122 73</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\CompDrv.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 121</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 75</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\presdriver.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 64</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 88 53</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 3 85 126 122 41 115 113 73</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\presdriver.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 64</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 88</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\barometer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 87</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 108 13</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 3 85 126 122 32 42 71 41 115 116 2 118 30 67 37 62 132 36 10 1 124 8 92 135 86</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 3 85 126 122 32 42 71 41 115 116 2 118 30 67 37 62 132 36 10 1 124 8 92 135 86</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\altimeter.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 131</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 111 76</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 3 85 126 122 62 30 37 129 72 84</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\pressure.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 89</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 40</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\sch9003-d02 v1.2.hex</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 11 55 66 80 111 108 77 35 68 26 88 40 21</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Debug\Exe\sch9003-d02 v1.2.a90</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 11 55 66 80 111 108 77 35 68 26 88 40 21</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\SysInit.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 6</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 66 95</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 3 85 126 122 41 115 130</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\Main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 58</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 63 26</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\delay.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 74</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 7 68</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\compass.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 49</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 77 128</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 92 39 28 86</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 92 39 28 86</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\Cmd.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 20</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 33 61</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\Sub.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 133</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 112 47</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\Alti.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 56</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 93 91</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\TwiSlave.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 60</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 52 25</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\Comp.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 59</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 31 29</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\Baro.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 136</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 51 4</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\BaroDrv.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 46</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 94 0</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\Init.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 69</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 90 78</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 99 85 126 3 122 116 2 118 30 67 37 62 132 36 10 17 124 16 39 28 34 18 83</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\SysInit.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 6</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 66</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 3 85 126 122 41 115 92 36</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\pressure.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 89</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 40 50</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 3 85 126 122 41 115 84 113 134 73 72 117</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\src\TWI_slave.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 119</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 80 57</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 42 71 41 115 85 126 116 2 118 30 67 37 62 44 36</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\barometer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 87</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 108 13</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 3 85 126 122 117 84</file>
+        </tool>
+      </inputs>
+    </file>
+  </configuration>
+  <configuration>
+    <name>Release</name>
+    <outputs>
+      <file>$TOOLKIT_DIR$\inc\ina90.h</file>
+      <file>$PROJ_DIR$\TWI_slave.c</file>
+      <file>$TOOLKIT_DIR$\src\template\cfgm88.xcl</file>
+      <file>$PROJ_DIR$\compass.c</file>
+      <file>$TOOLKIT_DIR$\lib\clib\cl1s-ec_mul.r90</file>
+      <file>$PROJ_DIR$\compdriver.c</file>
+      <file>$PROJ_DIR$\main.c</file>
+      <file>$PROJ_DIR$\delay.c</file>
+      <file>$TOOLKIT_DIR$\inc\clib\sysmac.h</file>
+      <file>$TOOLKIT_DIR$\inc\clib\stdlib.h</file>
+      <file>$TOOLKIT_DIR$\inc\iom88.h</file>
+      <file>$PROJ_DIR$\presdriver.c</file>
+      <file>$TOOLKIT_DIR$\src\template\cfg1soim.xcl</file>
+      <file>$TOOLKIT_DIR$\inc\clib\math.h</file>
+      <file>$PROJ_DIR$\altimeter.c</file>
+      <file>$TOOLKIT_DIR$\inc\ioavr.h</file>
+      <file>$PROJ_DIR$\altimeter.h</file>
+      <file>$PROJ_DIR$\delay.h</file>
+      <file>$PROJ_DIR$\pressure.h</file>
+      <file>$TOOLKIT_DIR$\inc\inavr.h</file>
+      <file>$PROJ_DIR$\SysInit.c</file>
+      <file>$PROJ_DIR$\compdriver.h</file>
+      <file>$PROJ_DIR$\Release\Exe\sch9003-d02 v1.2.hex</file>
+      <file>$PROJ_DIR$\Release\Obj\barometer.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\presdriver.pbi</file>
+      <file>$PROJ_DIR$\Release\Obj\compass.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\delay.pbi</file>
+      <file>$PROJ_DIR$\Release\Exe\sch9003-d02 v1.2.d90</file>
+      <file>$PROJ_DIR$\Release\Exe\sch9003-d02 v1.2.a90</file>
+      <file>$PROJ_DIR$\Release\Obj\TWI_slave.r90</file>
+      <file>$PROJ_DIR$\sch9003-d02 v1.2_data.hex</file>
+      <file>$PROJ_DIR$\Release\Obj\main.pbi</file>
+      <file>$PROJ_DIR$\Release\Obj\TWI_slave.pbi</file>
+      <file>$PROJ_DIR$\sch9003-d02 v1.2_eeprom.hex</file>
+      <file>$PROJ_DIR$\Release\Obj\pressure.pbi</file>
+      <file>$PROJ_DIR$\Release\Obj\SysInit.pbi</file>
+      <file>$PROJ_DIR$\Release\Obj\main.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\altimeter.pbi</file>
+      <file>$PROJ_DIR$\Release\Obj\compdriver.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\compass.pbi</file>
+      <file>$PROJ_DIR$\Release\Obj\SysInit.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\altimeter.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\compdriver.pbi</file>
+      <file>$PROJ_DIR$\Release\Obj\pressure.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\sch9003-d02 v1.pbd</file>
+      <file>$PROJ_DIR$\Release\Obj\presdriver.r90</file>
+      <file>$PROJ_DIR$\Release\Obj\barometer.pbi</file>
+      <file>$PROJ_DIR$\Release\Obj\delay.r90</file>
+      <file>$PROJ_DIR$\presdriver.h</file>
+      <file>$TOOLKIT_DIR$\inc\iomacro.h</file>
+      <file>$PROJ_DIR$\barometer.h</file>
+      <file>$PROJ_DIR$\pressure.c</file>
+      <file>$TOOLKIT_DIR$\inc\comp_a90.h</file>
+      <file>$PROJ_DIR$\compass.h</file>
+      <file>$TOOLKIT_DIR$\inc\intrinsics.h</file>
+      <file>$PROJ_DIR$\barometer.c</file>
+      <file>$TOOLKIT_DIR$\inc\clib\float.h</file>
+      <file>$PROJ_DIR$\SysInit.h</file>
+      <file>$PROJ_DIR$\TWI_slave.h</file>
+    </outputs>
+    <file>
+      <name>$PROJ_DIR$\TWI_slave.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 32</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 29</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 15 10 49 19 54 58</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 15 10 49 19 54 58</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>[ROOT_NODE]</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 30 33 28 27</file>
+        </tool>
+      </outputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\compass.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 39</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 25</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0 19 54 52 15 10 49 13 8 56 21 53</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 0 19 54 52 15 10 49 13 8 56 21 53</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\compdriver.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 42</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 38</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0 19 54 52 15 10 49 21</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 0 19 54 52 15 10 49 21</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\main.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 31</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 36</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0 19 54 52 15 10 49 13 8 58 17 57 16 50 53 21 48 18</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 0 19 54 52 15 10 49 13 8 58 17 57 16 50 53 21 48 18</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\delay.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 26</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 47</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0 19 54 52 17</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 0 19 54 52 17</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\presdriver.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 24</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 45</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0 19 54 52 10 49 48 17</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 0 19 54 52 10 49 48 17</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\altimeter.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 37</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 41</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0 19 54 52 13 8 9 56 16 18</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 0 19 54 52 13 8 9 56 16 18</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\SysInit.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 35</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 40</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0 19 54 52 10 49 57</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 0 19 54 52 10 49 57</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Release\Exe\sch9003-d02 v1.2.hex</name>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 2 12 40 29 41 23 25 38 47 36 45 43 4</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Release\Exe\sch9003-d02 v1.2.d90</name>
+      <outputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 30 33 28</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>XLINK</name>
+          <file> 2 12 40 29 41 23 25 38 47 36 45 43 4</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\Release\Obj\sch9003-d02 v1.pbd</name>
+      <inputs>
+        <tool>
+          <name>BILINK</name>
+          <file> 35 32 37 46 39 42 26 31 24 34</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\pressure.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 34</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 43</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0 19 54 52 10 49 18 48 58 17 16 50</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 0 19 54 52 10 49 18 48 58 17 16 50</file>
+        </tool>
+      </inputs>
+    </file>
+    <file>
+      <name>$PROJ_DIR$\barometer.c</name>
+      <outputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 46</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 23</file>
+        </tool>
+      </outputs>
+      <inputs>
+        <tool>
+          <name>BICOMP</name>
+          <file> 0 19 54 52 50 18</file>
+        </tool>
+        <tool>
+          <name>ICCAVR</name>
+          <file> 0 19 54 52 50 18</file>
+        </tool>
+      </inputs>
+    </file>
+    <forcedrebuild>
+      <name>[MULTI_TOOL]</name>
+      <tool>XLINK</tool>
+    </forcedrebuild>
+  </configuration>
+</project>
+
+

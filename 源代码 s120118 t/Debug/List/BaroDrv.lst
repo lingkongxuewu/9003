@@ -1,0 +1,669 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V6.21.3.50641 for Atmel AVR        30/May/2018  14:28:52 #
+# Copyright 1996-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  G:\罗盘\源代码 s120118 t\src\BaroDrv.c                   #
+#    Command line =  "G:\罗盘\源代码 s120118 t\src\BaroDrv.c" --cpu=m88 -ms   #
+#                    -o "G:\罗盘\源代码 s120118 t\Debug\Obj\" -lCN            #
+#                    "G:\罗盘\源代码 s120118 t\Debug\List\"                   #
+#                    --initializers_in_flash --no_inline --no_cross_call      #
+#                    --no_tbaa --debug -DENABLE_BIT_DEFINITIONS -e            #
+#                    --eeprom_size 512 --clib -Om                             #
+#    List file    =  G:\罗盘\源代码 s120118 t\Debug\List\BaroDrv.lst          #
+#    Object file  =  G:\罗盘\源代码 s120118 t\Debug\Obj\BaroDrv.r90           #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+G:\罗盘\源代码 s120118 t\src\BaroDrv.c
+      1          
+      2          /*******************************Copyright (c)***************************/
+      3          /*
+      4           *                         深圳铭之光电子技术有限公司
+      5           *                         工　　　　　程　　　　　部
+      6           *                         http://www.sinocomopto.com
+      7           */
+      8          /***********************************************************************/
+      9          #include  "_Include.h"
+
+   \                                 In  segment ABSOLUTE, at 0x2b
+   \   union <unnamed> volatile __io _A_PORTD
+   \                     _A_PORTD:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x2a
+   \   union <unnamed> volatile __io _A_DDRD
+   \                     _A_DDRD:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x29
+   \   union <unnamed> volatile __io _A_PIND
+   \                     _A_PIND:
+   \   00000000                      DS8 1
+     10          /***********************************************************************/
+     11          
+     12          	#define SCP_DRDY_IN()	DDR_DDRD2=0
+     13          	#define SCP_MISO_IN()	DDR_DDRD6=0
+     14          	
+     15          	#define SCP_DRDY_RD		PIND_PIND2
+     16          	#define SCP_MISO_RD		PIND_PIND6
+     17          	
+     18          	#define SCP_PD_OUT()	DDR_DDRD3=1
+     19          	#define SCP_CSB_OUT()	DDR_DDRD4=1
+     20          	#define SCP_MOSI_OUT()	DDR_DDRD5=1
+     21          	#define SCP_SCK_OUT()	DDR_DDRD7=1
+     22          	
+     23          	#define SCP_PD_ON()	PORTD_PORTD3=1
+     24          	#define SCP_CSB_ON()	PORTD_PORTD4=1
+     25          	#define SCP_MOSI_ON()	PORTD_PORTD5=1
+     26          	#define SCP_SCK_ON()	PORTD_PORTD7=1
+     27          	
+     28          	#define SCP_PD_OFF()	PORTD_PORTD3=0
+     29          	#define SCP_CSB_OFF()	PORTD_PORTD4=0
+     30          	#define SCP_MOSI_OFF()	PORTD_PORTD5=0
+     31          	#define SCP_SCK_OFF()	PORTD_PORTD7=0
+     32          
+     33          
+     34          /***********************************************************************/
+     35          /*
+     36           *功能：
+     37           *入口：
+     38           *出口：
+     39           *备注：
+     40           *函数性质：
+     41           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     42          void Scp_PowDown(void)
+   \                     Scp_PowDown:
+     43          {
+     44          	SCP_CSB_ON();
+   \   00000000   9A5C               SBI     0x0B, 0x04
+     45          	SCP_PD_ON();
+   \   00000002   9A5B               SBI     0x0B, 0x03
+     46          }
+   \   00000004   9508               RET
+   \   00000006                      REQUIRE _A_PORTD
+     47          
+     48          /*
+     49           *功能：
+     50           *入口：
+     51           *出口：
+     52           *备注：
+     53           *函数性质：
+     54           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     55          int8u Scp_BusyTest(void)
+   \                     Scp_BusyTest:
+     56          {
+     57          	return(SCP_DRDY_RD&0x01);
+   \   00000000   E000               LDI     R16, 0
+   \   00000002   994A               SBIC    0x09, 0x02
+   \   00000004   E001               LDI     R16, 1
+   \                     ??Scp_BusyTest_0:
+   \   00000006   9508               RET
+   \   00000008                      REQUIRE _A_PIND
+     58          }
+     59          
+     60          /*
+     61           *功能：
+     62           *入口：
+     63           *出口：
+     64           *备注：
+     65           *函数性质：
+     66           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     67          void Scp_ByteSend (int8u val)
+   \                     Scp_ByteSend:
+     68          {	int8u i;
+     69          	
+     70          	
+     71          	for(i=0;i<8;i++)
+   \   00000000   E010               LDI     R17, 0
+   \   00000002   C004               RJMP    ??Scp_ByteSend_0
+     72          	{	SCP_SCK_OFF();
+     73          		if((val&0x80)==0x80)            SCP_MOSI_ON();
+     74          		else				SCP_MOSI_OFF();
+   \                     ??Scp_ByteSend_1:
+   \   00000004   985D               CBI     0x0B, 0x05
+     75          		val<<=1;
+   \                     ??Scp_ByteSend_2:
+   \   00000006   0F00               LSL     R16
+     76          		SCP_SCK_ON();
+   \   00000008   9A5F               SBI     0x0B, 0x07
+   \   0000000A   9513               INC     R17
+   \                     ??Scp_ByteSend_0:
+   \   0000000C   3018               CPI     R17, 8
+   \   0000000E   985F               CBI     0x0B, 0x07
+   \   00000010   F420               BRCC    ??Scp_ByteSend_3
+   \   00000012   FB07               BST     R16, 7
+   \   00000014   F7BE               BRTC    ??Scp_ByteSend_1
+   \   00000016   9A5D               SBI     0x0B, 0x05
+   \   00000018   CFF6               RJMP    ??Scp_ByteSend_2
+     77          	}
+     78          	SCP_SCK_OFF();
+     79          }
+   \                     ??Scp_ByteSend_3:
+   \   0000001A   9508               RET
+   \   0000001C                      REQUIRE _A_PORTD
+     80          
+     81          /*
+     82           *功能：
+     83           *入口：
+     84           *出口：
+     85           *备注：
+     86           *函数性质：
+     87           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     88          int8u Scp_ByteGet (void)
+   \                     Scp_ByteGet:
+     89          {	int8u i;
+     90          	int8u val=0;
+   \   00000000   E000               LDI     R16, 0
+     91          	
+     92          	
+     93          	for(i=0;i<8;i++)
+   \   00000002   E020               LDI     R18, 0
+   \   00000004   C006               RJMP    ??Scp_ByteGet_0
+     94          	{	SCP_SCK_ON();
+   \                     ??Scp_ByteGet_1:
+   \   00000006   9A5F               SBI     0x0B, 0x07
+     95          		val<<=1;
+   \   00000008   0F00               LSL     R16
+     96          		if(SCP_MISO_RD&0x01){val|=0x01;}		//if((P4IN&SCP_MISO)==SCP_MISO){val|=0x01;}
+   \   0000000A   994E               SBIC    0x09, 0x06
+   \   0000000C   6001               ORI     R16, 0x01
+     97          		SCP_SCK_OFF();
+   \                     ??Scp_ByteGet_2:
+   \   0000000E   985F               CBI     0x0B, 0x07
+     98          	}
+   \   00000010   9523               INC     R18
+   \                     ??Scp_ByteGet_0:
+   \   00000012   3028               CPI     R18, 8
+   \   00000014   F3C0               BRCS    ??Scp_ByteGet_1
+     99          	return (val);
+   \   00000016   9508               RET
+   \   00000018                      REQUIRE _A_PORTD
+   \   00000018                      REQUIRE _A_PIND
+    100          }
+    101          
+    102          /*
+    103           *功能：
+    104           *入口：
+    105           *出口：
+    106           *备注：
+    107           *函数性质：
+    108           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    109          int16u Scp_DirRegRd (int8u addr,int8u tag)
+   \                     Scp_DirRegRd:
+    110          {	int16u val;
+   \   00000000   ....               RCALL   ?PROLOGUE3_L09
+   \   00000002   2FA1               MOV     R26, R17
+    111          	
+    112          	
+    113          	addr = (addr << 2);							//#1, shift the SCP1000 reg addr to left by 2
+    114          	SCP_CSB_OFF();							//#3, set CSB to low
+   \   00000004   985C               CBI     0x0B, 0x04
+    115          	Scp_ByteSend(addr);							//#4, write reg addr byte (8bits)
+   \   00000006   0F00               LSL     R16
+   \   00000008   0F00               LSL     R16
+   \   0000000A   ....               RCALL   Scp_ByteSend
+    116          	val=Scp_ByteGet();							//#5, Read data from SPI bus.
+   \   0000000C   ....               RCALL   Scp_ByteGet
+   \   0000000E   2F80               MOV     R24, R16
+   \   00000010   E090               LDI     R25, 0
+    117          	if(tag==2){ val<<=8; val+=Scp_ByteGet(); }
+   \   00000012   30A2               CPI     R26, 2
+   \   00000014   F421               BRNE    ??Scp_DirRegRd_0
+   \   00000016   2F98               MOV     R25, R24
+   \   00000018   E080               LDI     R24, 0
+   \   0000001A   ....               RCALL   Scp_ByteGet
+   \   0000001C   0F80               ADD     R24, R16
+    118          	SCP_CSB_ON();							//#6, Set CSB to HIGH
+   \                     ??Scp_DirRegRd_0:
+   \   0000001E   9A5C               SBI     0x0B, 0x04
+    119          	return	val;
+   \   00000020   018C               MOVW    R17:R16, R25:R24
+   \   00000022   E0E3               LDI     R30, 3
+   \   00000024   ....               RJMP    ?EPILOGUE_B3_L09
+   \   00000026                      REQUIRE _A_PORTD
+    120          }
+    121          
+    122          /*
+    123           *功能：
+    124           *入口：
+    125           *出口：
+    126           *备注：
+    127           *函数性质：
+    128           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    129          void Scp_DirRegWr (int8u addr,int8u val)
+   \                     Scp_DirRegWr:
+    130          {
+   \   00000000   938A               ST      -Y, R24
+   \   00000002   2F81               MOV     R24, R17
+    131          	addr = (addr << 2);							//#1, shift the SCP1000 reg addr to left by 2
+    132          	addr |= 0x02;								//#2, set write bit to one (RW=1)
+    133          
+    134          	SCP_CSB_OFF();							//#3, set CSB to low
+   \   00000004   985C               CBI     0x0B, 0x04
+    135          	Scp_ByteSend(addr);							//#4, write reg addr byte (8bits)
+   \   00000006   0F00               LSL     R16
+   \   00000008   0F00               LSL     R16
+   \   0000000A   6002               ORI     R16, 0x02
+   \   0000000C   ....               RCALL   Scp_ByteSend
+    136          	Scp_ByteSend(val);							//#5, write data byte (8bit) to line
+   \   0000000E   2F08               MOV     R16, R24
+   \   00000010   ....               RCALL   Scp_ByteSend
+    137          	SCP_CSB_ON();							//#6, Set CSB to HIGH
+   \   00000012   9A5C               SBI     0x0B, 0x04
+    138          }
+   \   00000014   9189               LD      R24, Y+
+   \   00000016   9508               RET
+   \   00000018                      REQUIRE _A_PORTD
+    139          
+    140          /*
+    141           *功能：
+    142           *入口：
+    143           *出口：
+    144           *备注：
+    145           *函数性质：
+    146           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    147          int16u Scp_IndirRegRd (int8u addr)
+   \                     Scp_IndirRegRd:
+    148          {	int16u val;
+    149          	
+    150          	
+    151          	Scp_DirRegWr(0x02,addr);
+   \   00000000   2F10               MOV     R17, R16
+   \   00000002   E002               LDI     R16, 2
+   \   00000004   ....               RCALL   Scp_DirRegWr
+    152          	Scp_DirRegWr(0x03,0x01);	delay_ms(10);
+   \   00000006   E011               LDI     R17, 1
+   \   00000008   E003               LDI     R16, 3
+   \   0000000A   ....               RCALL   Scp_DirRegWr
+   \   0000000C   E00A               LDI     R16, 10
+   \   0000000E   E010               LDI     R17, 0
+   \   00000010   ....               RCALL   delay_ms
+    153          	val=Scp_DirRegRd(0x02,2);
+    154          	return val;
+   \   00000012   E012               LDI     R17, 2
+   \   00000014   E002               LDI     R16, 2
+   \   00000016   ....               RCALL   Scp_DirRegRd
+   \   00000018   9508               RET
+    155          }
+    156          
+    157          /*
+    158           *功能：
+    159           *入口：
+    160           *出口：
+    161           *备注：
+    162           *函数性质：
+    163           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    164          void Scp_IndirRegWr (int8u addr,int8u val)
+   \                     Scp_IndirRegWr:
+    165          {
+   \   00000000   938A               ST      -Y, R24
+   \   00000002   2F81               MOV     R24, R17
+    166          	Scp_DirRegWr(0x02,addr);
+   \   00000004   2F10               MOV     R17, R16
+   \   00000006   E002               LDI     R16, 2
+   \   00000008   ....               RCALL   Scp_DirRegWr
+    167          	Scp_DirRegWr(0x01,val);
+   \   0000000A   2F18               MOV     R17, R24
+   \   0000000C   E001               LDI     R16, 1
+   \   0000000E   ....               RCALL   Scp_DirRegWr
+    168          	Scp_DirRegWr(0x03,0x02);	delay_ms(50);
+   \   00000010   E012               LDI     R17, 2
+   \   00000012   E003               LDI     R16, 3
+   \   00000014   ....               RCALL   Scp_DirRegWr
+   \   00000016   E302               LDI     R16, 50
+   \   00000018   E010               LDI     R17, 0
+   \   0000001A   ....               RCALL   delay_ms
+    169          }
+   \   0000001C   9189               LD      R24, Y+
+   \   0000001E   9508               RET
+    170          
+    171          /*
+    172           *功能：
+    173           *入口：
+    174           *出口：
+    175           *备注：
+    176           *函数性质：
+    177           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    178          int8u Scp_FlashByteRd (int8u addr)
+   \                     Scp_FlashByteRd:
+    179          {	int8u val;
+    180          	
+    181          	
+    182          	Scp_DirRegWr(0x02,addr);
+   \   00000000   2F10               MOV     R17, R16
+   \   00000002   E002               LDI     R16, 2
+   \   00000004   ....               RCALL   Scp_DirRegWr
+    183          	Scp_DirRegWr(0x03,0x05);	delay_ms(20);
+   \   00000006   E015               LDI     R17, 5
+   \   00000008   E003               LDI     R16, 3
+   \   0000000A   ....               RCALL   Scp_DirRegWr
+   \   0000000C   E104               LDI     R16, 20
+   \   0000000E   E010               LDI     R17, 0
+   \   00000010   ....               RCALL   delay_ms
+    184          	val=Scp_DirRegRd(0x1F,1);
+   \   00000012   E011               LDI     R17, 1
+   \   00000014   E10F               LDI     R16, 31
+   \   00000016   ....               RCALL   Scp_DirRegRd
+    185          	return val;
+   \   00000018   9508               RET
+    186          }
+    187          
+    188          /*
+    189           *功能：
+    190           *入口：
+    191           *出口：
+    192           *备注：
+    193           *函数性质：
+    194           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    195          void Scp_FlashByteWr (int8u addr,int8u val)
+   \                     Scp_FlashByteWr:
+    196          {
+   \   00000000   938A               ST      -Y, R24
+   \   00000002   2F81               MOV     R24, R17
+    197          	Scp_DirRegWr(0x02,addr);
+   \   00000004   2F10               MOV     R17, R16
+   \   00000006   E002               LDI     R16, 2
+   \   00000008   ....               RCALL   Scp_DirRegWr
+    198          	Scp_DirRegWr(0x01,val);
+   \   0000000A   2F18               MOV     R17, R24
+   \   0000000C   E001               LDI     R16, 1
+   \   0000000E   ....               RCALL   Scp_DirRegWr
+    199          	Scp_DirRegWr(0x03,0x06);	delay_ms(50);
+   \   00000010   E016               LDI     R17, 6
+   \   00000012   E003               LDI     R16, 3
+   \   00000014   ....               RCALL   Scp_DirRegWr
+   \   00000016   E302               LDI     R16, 50
+   \   00000018   E010               LDI     R17, 0
+   \   0000001A   ....               RCALL   delay_ms
+    200          }
+   \   0000001C   9189               LD      R24, Y+
+   \   0000001E   9508               RET
+    201          
+    202          
+    203          /*
+    204           *功能：
+    205           *入口：
+    206           *出口：
+    207           *备注：
+    208           *函数性质：
+    209           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    210          void fail(void)
+   \                     fail:
+    211          {
+    212          }
+   \   00000000   9508               RET
+    213          
+    214          /*
+    215           *功能：
+    216           *入口：
+    217           *出口：
+    218           *备注：
+    219           *函数性质：
+    220           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    221          void Scp_Init (void)
+   \                     Scp_Init:
+    222          {	int8u val;
+   \   00000000   938A               ST      -Y, R24
+    223          	int8u i;
+    224          	
+    225          	
+    226          	DDRD=0xBA;
+   \   00000002   EB0A               LDI     R16, 186
+   \   00000004   B90A               OUT     0x0A, R16
+    227          	PORTD=0x76;
+   \   00000006   E706               LDI     R16, 118
+   \   00000008   B90B               OUT     0x0B, R16
+    228          	SCP_CSB_ON();
+   \   0000000A   9A5C               SBI     0x0B, 0x04
+    229          	SCP_PD_ON();	delay_ms(1);
+   \   0000000C   9A5B               SBI     0x0B, 0x03
+   \   0000000E   E001               LDI     R16, 1
+   \   00000010   E010               LDI     R17, 0
+   \   00000012   ....               RCALL   delay_ms
+    230          	SCP_PD_OFF();	delay_ms(60);
+   \   00000014   985B               CBI     0x0B, 0x03
+   \   00000016   E30C               LDI     R16, 60
+   \   00000018   E010               LDI     R17, 0
+   \   0000001A   ....               RCALL   delay_ms
+    231          	for(i=6;i>0;i--)
+   \   0000001C   E086               LDI     R24, 6
+   \   0000001E   C004               RJMP    ??Scp_Init_0
+    232          	{	val=Scp_DirRegRd(0x07,1);
+    233          		if(!(val&0x01))break;
+    234          		delay_ms(10);
+   \                     ??Scp_Init_1:
+   \   00000020   E00A               LDI     R16, 10
+   \   00000022   E010               LDI     R17, 0
+   \   00000024   ....               RCALL   delay_ms
+   \   00000026   958A               DEC     R24
+   \                     ??Scp_Init_0:
+   \   00000028   2388               TST     R24
+   \   0000002A   F029               BREQ    ??Scp_Init_2
+   \   0000002C   E011               LDI     R17, 1
+   \   0000002E   E007               LDI     R16, 7
+   \   00000030   ....               RCALL   Scp_DirRegRd
+   \   00000032   FB00               BST     R16, 0
+   \   00000034   F3AE               BRTS    ??Scp_Init_1
+    235          	}
+    236          	if(i==0)fail();
+   \                     ??Scp_Init_2:
+   \   00000036   2388               TST     R24
+   \   00000038   F409               BRNE    ??Scp_Init_3
+   \   0000003A   ....               RCALL   fail
+    237          	val=Scp_DirRegRd(0x1F,1);
+   \                     ??Scp_Init_3:
+   \   0000003C   E011               LDI     R17, 1
+   \   0000003E   E10F               LDI     R16, 31
+   \   00000040   ....               RCALL   Scp_DirRegRd
+    238          	if(!(val&0x01))fail();
+   \   00000042   FB00               BST     R16, 0
+   \   00000044   F00E               BRTS    ??Scp_Init_4
+   \   00000046   ....               RCALL   fail
+    239          	
+    240          	
+    241          	Scp_ReInit();
+   \                     ??Scp_Init_4:
+   \   00000048   ....               RCALL   Scp_ReInit
+    242          }
+   \   0000004A   9189               LD      R24, Y+
+   \   0000004C   9508               RET
+   \   0000004E                      REQUIRE _A_DDRD
+   \   0000004E                      REQUIRE _A_PORTD
+    243          
+    244          /*
+    245           *功能：
+    246           *入口：
+    247           *出口：
+    248           *备注：
+    249           *函数性质：
+    250           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    251          void Scp_ReInit (void)
+   \                     Scp_ReInit:
+    252          {	int16u val;
+   \   00000000   938A               ST      -Y, R24
+    253          	int8u  i;
+    254          	
+    255          	
+    256          	DDRD=0xBA;
+   \   00000002   EB0A               LDI     R16, 186
+   \   00000004   B90A               OUT     0x0A, R16
+    257          	PORTD=0x76;
+   \   00000006   E706               LDI     R16, 118
+   \   00000008   B90B               OUT     0x0B, R16
+    258          	SCP_CSB_ON();
+   \   0000000A   9A5C               SBI     0x0B, 0x04
+    259          	SCP_PD_ON();	delay_ms(1);
+   \   0000000C   9A5B               SBI     0x0B, 0x03
+   \   0000000E   E001               LDI     R16, 1
+   \   00000010   E010               LDI     R17, 0
+   \   00000012   ....               RCALL   delay_ms
+    260          	SCP_PD_OFF();	delay_ms(60);
+   \   00000014   985B               CBI     0x0B, 0x03
+   \   00000016   E30C               LDI     R16, 60
+   \   00000018   E010               LDI     R17, 0
+   \   0000001A   ....               RCALL   delay_ms
+    261          	for(i=6;i>0;i--)
+   \   0000001C   E086               LDI     R24, 6
+   \   0000001E   C004               RJMP    ??Scp_ReInit_0
+    262          	{	val=Scp_DirRegRd(0x07,1);
+    263          		if(!(val&0x01))break;
+    264          		delay_ms(10);
+   \                     ??Scp_ReInit_1:
+   \   00000020   E00A               LDI     R16, 10
+   \   00000022   E010               LDI     R17, 0
+   \   00000024   ....               RCALL   delay_ms
+   \   00000026   958A               DEC     R24
+   \                     ??Scp_ReInit_0:
+   \   00000028   2388               TST     R24
+   \   0000002A   F029               BREQ    ??Scp_ReInit_2
+   \   0000002C   E011               LDI     R17, 1
+   \   0000002E   E007               LDI     R16, 7
+   \   00000030   ....               RCALL   Scp_DirRegRd
+   \   00000032   FB00               BST     R16, 0
+   \   00000034   F3AE               BRTS    ??Scp_ReInit_1
+    265          	}
+    266          	if(i==0)fail();
+   \                     ??Scp_ReInit_2:
+   \   00000036   2388               TST     R24
+   \   00000038   F409               BRNE    ??Scp_ReInit_3
+   \   0000003A   ....               RCALL   fail
+    267          	val=Scp_DirRegRd(0x1F,1);
+   \                     ??Scp_ReInit_3:
+   \   0000003C   E011               LDI     R17, 1
+   \   0000003E   E10F               LDI     R16, 31
+   \   00000040   ....               RCALL   Scp_DirRegRd
+    268          	if(!(val&0x01))fail();
+   \   00000042   FB00               BST     R16, 0
+   \   00000044   F00E               BRTS    ??Scp_ReInit_4
+   \   00000046   ....               RCALL   fail
+    269          	
+    270          	Scp_IndirRegWr(0x2D,0x03);	delay_ms(100);
+   \                     ??Scp_ReInit_4:
+   \   00000048   E013               LDI     R17, 3
+   \   0000004A   E20D               LDI     R16, 45
+   \   0000004C   ....               RCALL   Scp_IndirRegWr
+   \   0000004E   E604               LDI     R16, 100
+   \   00000050   E010               LDI     R17, 0
+   \   00000052   ....               RCALL   delay_ms
+    271          	Scp_DirRegWr(0x03,0x00);	delay_ms(10);
+   \   00000054   E010               LDI     R17, 0
+   \   00000056   E003               LDI     R16, 3
+   \   00000058   ....               RCALL   Scp_DirRegWr
+   \   0000005A   E00A               LDI     R16, 10
+   \   0000005C   E010               LDI     R17, 0
+   \   0000005E   ....               RCALL   delay_ms
+    272          	Scp_DirRegWr(0x03,0x0A);	delay_ms(100);
+   \   00000060   E01A               LDI     R17, 10
+   \   00000062   E003               LDI     R16, 3
+   \   00000064   ....               RCALL   Scp_DirRegWr
+   \   00000066   E604               LDI     R16, 100
+   \   00000068   E010               LDI     R17, 0
+   \   0000006A   ....               RCALL   delay_ms
+    273          }
+   \   0000006C   9189               LD      R24, Y+
+   \   0000006E   9508               RET
+   \   00000070                      REQUIRE _A_DDRD
+   \   00000070                      REQUIRE _A_PORTD
+    274          
+    275          
+    276          
+
+   Maximum stack usage in bytes:
+
+   CSTACK RSTACK Function
+   ------ ------ --------
+      0      2   Scp_BusyTest
+      0      2   Scp_ByteGet
+      0      2   Scp_ByteSend
+      3      2   Scp_DirRegRd
+        3      2   -> Scp_ByteGet
+        3      2   -> Scp_ByteSend
+      1      2   Scp_DirRegWr
+        1      2   -> Scp_ByteSend
+      0      2   Scp_FlashByteRd
+        0      2   -> Scp_DirRegRd
+        0      2   -> Scp_DirRegWr
+        0      2   -> delay_ms
+      1      2   Scp_FlashByteWr
+        1      2   -> Scp_DirRegWr
+        1      2   -> delay_ms
+      0      2   Scp_IndirRegRd
+        0      2   -> Scp_DirRegRd
+        0      2   -> Scp_DirRegWr
+        0      2   -> delay_ms
+      1      2   Scp_IndirRegWr
+        1      2   -> Scp_DirRegWr
+        1      2   -> delay_ms
+      1      2   Scp_Init
+        1      2   -> Scp_DirRegRd
+        1      2   -> Scp_ReInit
+        1      2   -> delay_ms
+        1      2   -> fail
+      0      2   Scp_PowDown
+      1      2   Scp_ReInit
+        1      2   -> Scp_DirRegRd
+        1      2   -> Scp_DirRegWr
+        1      2   -> Scp_IndirRegWr
+        1      2   -> delay_ms
+        1      2   -> fail
+      0      2   fail
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       8  Scp_BusyTest
+      24  Scp_ByteGet
+      28  Scp_ByteSend
+      38  Scp_DirRegRd
+      24  Scp_DirRegWr
+      26  Scp_FlashByteRd
+      32  Scp_FlashByteWr
+      26  Scp_IndirRegRd
+      32  Scp_IndirRegWr
+      78  Scp_Init
+       6  Scp_PowDown
+     112  Scp_ReInit
+       1  _A_DDRD
+       1  _A_PIND
+       1  _A_PORTD
+       2  fail
+
+ 
+   3 bytes in segment ABSOLUTE
+ 436 bytes in segment CODE
+ 
+ 436 bytes of CODE memory
+   0 bytes of DATA memory (+ 3 bytes shared)
+
+Errors: none
+Warnings: none

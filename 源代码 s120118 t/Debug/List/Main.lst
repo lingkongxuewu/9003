@@ -1,0 +1,332 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V6.21.3.50641 for Atmel AVR        30/May/2018  14:28:53 #
+# Copyright 1996-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  G:\罗盘\源代码 s120118 t\src\Main.c                      #
+#    Command line =  "G:\罗盘\源代码 s120118 t\src\Main.c" --cpu=m88 -ms -o   #
+#                    "G:\罗盘\源代码 s120118 t\Debug\Obj\" -lCN               #
+#                    "G:\罗盘\源代码 s120118 t\Debug\List\"                   #
+#                    --initializers_in_flash --no_inline --no_cross_call      #
+#                    --no_tbaa --debug -DENABLE_BIT_DEFINITIONS -e            #
+#                    --eeprom_size 512 --clib -Om                             #
+#    List file    =  G:\罗盘\源代码 s120118 t\Debug\List\Main.lst             #
+#    Object file  =  G:\罗盘\源代码 s120118 t\Debug\Obj\Main.r90              #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+G:\罗盘\源代码 s120118 t\src\Main.c
+      1          
+      2          /*******************************Copyright (c)***************************/
+      3          /*
+      4           *                         深圳铭之光电子技术有限公司
+      5           *                         工　　　　　程　　　　　部
+      6           *                         http://www.sinocomopto.com
+      7           */
+      8          /***********************************************************************/
+      9          #define	__MAIN_C__
+     10          #include  "_Include.h"
+
+   \                                 In  segment ABSOLUTE, at 0x2b
+   \   union <unnamed> volatile __io _A_PORTD
+   \                     _A_PORTD:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x2a
+   \   union <unnamed> volatile __io _A_DDRD
+   \                     _A_DDRD:
+   \   00000000                      DS8 1
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   unsigned char CompCalTag
+   \                     CompCalTag:
+   \   00000000                      DS8 1
+   \   unsigned char SysTag
+   \                     SysTag:
+   \   00000001                      DS8 1
+   \   unsigned char SysPowOnTag
+   \                     SysPowOnTag:
+   \   00000002                      DS8 1
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   signed int XMax
+   \                     XMax:
+   \   00000000                      DS8 2
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   signed int YMax
+   \                     YMax:
+   \   00000000                      DS8 2
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   signed int XMin
+   \                     XMin:
+   \   00000000                      DS8 2
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   signed int YMin
+   \                     YMin:
+   \   00000000                      DS8 2
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   signed int XAtYMin
+   \                     XAtYMin:
+   \   00000000                      DS8 2
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   signed int XAtYMax
+   \                     XAtYMax:
+   \   00000000                      DS8 2
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   long AltiVal
+   \                     AltiVal:
+   \   00000000                      DS8 4
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   unsigned long BaroVal
+   \                     BaroVal:
+   \   00000000                      DS8 4
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   unsigned int CompVal
+   \                     CompVal:
+   \   00000000                      DS8 2
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   signed int TempVal
+   \                     TempVal:
+   \   00000000                      DS8 2
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   unsigned long SeaLevel
+   \                     SeaLevel:
+   \   00000000                      DS8 4
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   signed int BaroOffset
+   \                     BaroOffset:
+   \   00000000                      DS8 2
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   unsigned int CompOffset
+   \                     CompOffset:
+   \   00000000                      DS8 2
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \   unsigned char TxBuf[5]
+   \                     TxBuf:
+   \   00000000                      DS8 5
+     11          
+     12          
+     13          
+     14          /*
+     15           *功能：
+     16           *入口：
+     17           *出口：
+     18           *备注：
+     19           *函数性质：
+     20           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     21          void Main_Led0Proc (void)
+   \                     Main_Led0Proc:
+     22          {	static int8u i=0;
+     23          	
+     24          	if(++i==2)i=0;
+   \   00000000   9100....           LDS     R16, ??i
+   \   00000004   9503               INC     R16
+   \   00000006   9300....           STS     ??i, R16
+   \   0000000A   9100....           LDS     R16, ??i
+   \   0000000E   3002               CPI     R16, 2
+   \   00000010   F419               BRNE    ??Main_Led0Proc_0
+   \   00000012   E000               LDI     R16, 0
+   \   00000014   9300....           STS     ??i, R16
+     25          	if(i==0)LED0_ON();
+   \                     ??Main_Led0Proc_0:
+   \   00000018   9100....           LDS     R16, ??i
+   \   0000001C   2300               TST     R16
+   \   0000001E   F411               BRNE    ??Main_Led0Proc_1
+   \   00000020   9A58               SBI     0x0B, 0x00
+   \   00000022   9508               RET
+     26          	else    LED0_OFF();
+   \                     ??Main_Led0Proc_1:
+   \   00000024   9858               CBI     0x0B, 0x00
+     27          }
+   \   00000026   9508               RET
+   \   00000028                      REQUIRE _A_PORTD
+
+   \                                 In  segment NEAR_Z, align 1, keep-with-next
+   \   00000000                      REQUIRE `?<Segment init: NEAR_Z>`
+   \                     ??i:
+   \   00000000                      DS8 1
+     28          
+     29          /*
+     30           *功能：
+     31           *入口：
+     32           *出口：
+     33           *备注：
+     34           *函数性质：
+     35           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     36          int main (void)
+   \                     main:
+     37          {	int8u buf[5];
+   \   00000000   9725               SBIW    R29:R28, 5
+     38          	
+     39          	
+     40          	delay_ms(10);
+   \   00000002   E00A               LDI     R16, 10
+   \   00000004   E010               LDI     R17, 0
+   \   00000006   ....               RCALL   delay_ms
+     41          	
+     42          	Init_All();
+   \   00000008   ....               RCALL   Init_All
+     43          	
+     44          	LED0_OUT();	LED1_OUT();
+   \   0000000A   9A50               SBI     0x0A, 0x00
+   \   0000000C   9A51               SBI     0x0A, 0x01
+     45          	LED0_OFF();	LED1_OFF();
+   \   0000000E   9858               CBI     0x0B, 0x00
+   \   00000010   9859               CBI     0x0B, 0x01
+   \   00000012   E000               LDI     R16, 0
+   \   00000014   9300....           STS     (CompCalTag + 1), R16
+     46          	
+     47          	SysTag=0;
+     48          	CompCalTag=0;
+   \   00000018   9300....           STS     CompCalTag, R16
+     49          	if(Main_SysInitChk()==1){ SysTag=1; }
+   \   0000001C   ....               RCALL   Main_SysInitChk
+     50          	SysTag=1;
+   \   0000001E   E001               LDI     R16, 1
+   \   00000020   9300....           STS     (CompCalTag + 1), R16
+     51          	SysPowOnTag=1;
+   \   00000024   9300....           STS     (CompCalTag + 2), R16
+     52          	_SEI();
+   \   00000028   9478               SEI
+   \   0000002A   C00C               RJMP    ??main_0
+     53          	while(1)
+     54          	{	if(SysTag==1)
+     55          		{	
+     56          			if(SysPowOnTag==1)
+     57          			{	Scp_AbtCntProc();
+     58          				if(CompCalTag==0){ Comp_AngCntProc();  }
+     59          				else             { Comp_CalSampProc(); }
+     60          			}
+     61          			
+     62          		}
+     63          		else
+     64          		{	delay_ms(20);
+   \                     ??main_1:
+   \   0000002C   E104               LDI     R16, 20
+   \   0000002E   E010               LDI     R17, 0
+   \   00000030   ....               RCALL   delay_ms
+     65          		}
+     66          		if(1==Twi_GetDataFromTransceiver(buf,4)){ Twi_CmdDeal(buf); }
+   \                     ??main_2:
+   \   00000032   E024               LDI     R18, 4
+   \   00000034   018E               MOVW    R17:R16, R29:R28
+   \   00000036   ....               RCALL   Twi_GetDataFromTransceiver
+   \   00000038   3001               CPI     R16, 1
+   \   0000003A   F411               BRNE    ??main_3
+   \   0000003C   018E               MOVW    R17:R16, R29:R28
+   \   0000003E   ....               RCALL   Twi_CmdDeal
+     67          		Main_Led0Proc();
+   \                     ??main_3:
+   \   00000040   ....               RCALL   Main_Led0Proc
+     68          		__watchdog_reset();
+   \   00000042   95A8               WDR
+   \                     ??main_0:
+   \   00000044   9100....           LDS     R16, (CompCalTag + 1)
+   \   00000048   3001               CPI     R16, 1
+   \   0000004A   F781               BRNE    ??main_1
+   \   0000004C   9100....           LDS     R16, (CompCalTag + 2)
+   \   00000050   3001               CPI     R16, 1
+   \   00000052   F779               BRNE    ??main_2
+   \   00000054   ....               RCALL   Scp_AbtCntProc
+   \   00000056   9100....           LDS     R16, CompCalTag
+   \   0000005A   2300               TST     R16
+   \   0000005C   F411               BRNE    ??main_4
+   \   0000005E   ....               RCALL   Comp_AngCntProc
+   \   00000060   CFE8               RJMP    ??main_2
+   \                     ??main_4:
+   \   00000062   ....               RCALL   Comp_CalSampProc
+   \   00000064   CFE6               RJMP    ??main_2
+   \   00000066                      REQUIRE _A_DDRD
+   \   00000066                      REQUIRE _A_PORTD
+     69          	}
+     70          }
+
+   Maximum stack usage in bytes:
+
+   CSTACK RSTACK Function
+   ------ ------ --------
+      0      2   Main_Led0Proc
+      5      2   main
+        5      2   -> Comp_AngCntProc
+        5      2   -> Comp_CalSampProc
+        5      2   -> Init_All
+        5      2   -> Main_Led0Proc
+        5      2   -> Main_SysInitChk
+        5      2   -> Scp_AbtCntProc
+        5      2   -> Twi_CmdDeal
+        5      2   -> Twi_GetDataFromTransceiver
+        5      2   -> delay_ms
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       4  AltiVal
+       2  BaroOffset
+       4  BaroVal
+       3  CompCalTag
+          SysTag
+          SysPowOnTag
+       2  CompOffset
+       2  CompVal
+      40  Main_Led0Proc
+       4  SeaLevel
+       2  TempVal
+       5  TxBuf
+       2  XAtYMax
+       2  XAtYMin
+       2  XMax
+       2  XMin
+       2  YMax
+       2  YMin
+       1  _A_DDRD
+       1  _A_PORTD
+       1  i
+     102  main
+       6  -- Other
+
+ 
+   2 bytes in segment ABSOLUTE
+ 142 bytes in segment CODE
+   6 bytes in segment INITTAB
+  41 bytes in segment NEAR_Z
+ 
+ 142 bytes of CODE memory (+ 6 bytes shared)
+  41 bytes of DATA memory (+ 2 bytes shared)
+
+Errors: none
+Warnings: none

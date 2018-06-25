@@ -1,0 +1,348 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V6.21.3.50641 for Atmel AVR        30/May/2018  14:28:52 #
+# Copyright 1996-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  G:\罗盘\源代码 s120118 t\src\Init.c                      #
+#    Command line =  "G:\罗盘\源代码 s120118 t\src\Init.c" --cpu=m88 -ms -o   #
+#                    "G:\罗盘\源代码 s120118 t\Debug\Obj\" -lCN               #
+#                    "G:\罗盘\源代码 s120118 t\Debug\List\"                   #
+#                    --initializers_in_flash --no_inline --no_cross_call      #
+#                    --no_tbaa --debug -DENABLE_BIT_DEFINITIONS -e            #
+#                    --eeprom_size 512 --clib -Om                             #
+#    List file    =  G:\罗盘\源代码 s120118 t\Debug\List\Init.lst             #
+#    Object file  =  G:\罗盘\源代码 s120118 t\Debug\Obj\Init.r90              #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+G:\罗盘\源代码 s120118 t\src\Init.c
+      1          
+      2          /*******************************Copyright (c)***************************/
+      3          /*
+      4           *                         深圳铭之光电子技术有限公司
+      5           *                         工　　　　　程　　　　　部
+      6           *                         http://www.sinocomopto.com
+      7           */
+      8          /***********************************************************************/
+      9          
+     10          #include  "_Include.h"
+
+   \                                 In  segment ABSOLUTE, at 0x7a
+   \   union <unnamed> volatile __io _A_ADCSRA
+   \                     _A_ADCSRA:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x64
+   \   union <unnamed> volatile __io _A_PRR
+   \                     _A_PRR:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x53
+   \   union <unnamed> volatile __io _A_SMCR
+   \                     _A_SMCR:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x50
+   \   union <unnamed> volatile __io _A_ACSR
+   \                     _A_ACSR:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x4c
+   \   union <unnamed> volatile __io _A_SPCR
+   \                     _A_SPCR:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x2b
+   \   union <unnamed> volatile __io _A_PORTD
+   \                     _A_PORTD:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x2a
+   \   union <unnamed> volatile __io _A_DDRD
+   \                     _A_DDRD:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x28
+   \   union <unnamed> volatile __io _A_PORTC
+   \                     _A_PORTC:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x27
+   \   union <unnamed> volatile __io _A_DDRC
+   \                     _A_DDRC:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x25
+   \   union <unnamed> volatile __io _A_PORTB
+   \                     _A_PORTB:
+   \   00000000                      DS8 1
+
+   \                                 In  segment ABSOLUTE, at 0x24
+   \   union <unnamed> volatile __io _A_DDRB
+   \                     _A_DDRB:
+   \   00000000                      DS8 1
+     11          
+     12          /***********************************************************************/
+     13          
+     14          /*
+     15           *功能：
+     16           *入口：
+     17           *出口：
+     18           *备注：
+     19           *函数性质：
+     20           */
+     21          //void WDTTurnOn (void)
+     22          //{
+     23          //	__disable_interrupt();
+     24          //	__watchdog_reset();
+     25          //	/*Clear WDRF in MCUSR*/
+     26          //	MCUSR_WDRF  = 0;
+     27          //	/*Start timed equence*/
+     28          //	WDTCSR_WDE  = 1;
+     29          //	WDTCSR_WDCE   = 1;
+     30          //	WDTCSR = 0x29;  //Set prescaler(time-out) value = 1024K cycles (~8.0S)
+     31          //	__enable_interrupt();
+     32          //}
+     33          
+     34          /*
+     35           *功能：
+     36           *入口：
+     37           *出口：
+     38           *备注：
+     39           *函数性质：
+     40           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     41          void Init_GpioPort (void)
+   \                     Init_GpioPort:
+     42          {
+     43          	DDRB  = 0x00;          //set write
+   \   00000000   E000               LDI     R16, 0
+   \   00000002   B904               OUT     0x04, R16
+     44          	PORTB = 0xFF;          //write data register
+   \   00000004   EF0F               LDI     R16, 255
+   \   00000006   B905               OUT     0x05, R16
+     45          	DDRD  = 0x00;
+   \   00000008   E000               LDI     R16, 0
+   \   0000000A   B90A               OUT     0x0A, R16
+     46          	PORTD = 0xFF;
+   \   0000000C   EF0F               LDI     R16, 255
+   \   0000000E   B90B               OUT     0x0B, R16
+     47          	DDRC  = 0x00;
+   \   00000010   E000               LDI     R16, 0
+   \   00000012   B907               OUT     0x07, R16
+     48          	PORTC = 0xFF;
+   \   00000014   EF0F               LDI     R16, 255
+   \   00000016   B908               OUT     0x08, R16
+     49          }
+   \   00000018   9508               RET
+   \   0000001A                      REQUIRE _A_DDRB
+   \   0000001A                      REQUIRE _A_PORTB
+   \   0000001A                      REQUIRE _A_DDRD
+   \   0000001A                      REQUIRE _A_PORTD
+   \   0000001A                      REQUIRE _A_DDRC
+   \   0000001A                      REQUIRE _A_PORTC
+     50          
+     51          /*
+     52           *功能：
+     53           *入口：
+     54           *出口：
+     55           *备注：
+     56           *函数性质：
+     57           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     58          void Init_GpioPortRe (void)
+   \                     Init_GpioPortRe:
+     59          {
+     60          //	DDRB  = 0x00;
+     61          //	PORTB = 0xFF;
+     62          	DDRD  = 0x00;
+   \   00000000   E000               LDI     R16, 0
+   \   00000002   B90A               OUT     0x0A, R16
+     63          	PORTD = 0xFF;
+   \   00000004   EF0F               LDI     R16, 255
+   \   00000006   B90B               OUT     0x0B, R16
+     64          	DDRC  = 0x00;
+   \   00000008   E000               LDI     R16, 0
+   \   0000000A   B907               OUT     0x07, R16
+     65          	PORTC = 0xFF;
+   \   0000000C   EF0F               LDI     R16, 255
+   \   0000000E   B908               OUT     0x08, R16
+     66          }
+   \   00000010   9508               RET
+   \   00000012                      REQUIRE _A_DDRD
+   \   00000012                      REQUIRE _A_PORTD
+   \   00000012                      REQUIRE _A_DDRC
+   \   00000012                      REQUIRE _A_PORTC
+     67          
+     68          /*
+     69           *功能：
+     70           *入口：
+     71           *出口：
+     72           *备注：
+     73           *函数性质：
+     74           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     75          void Init_PowerManager (void)
+   \                     Init_PowerManager:
+     76          {
+     77          	ADCSRA = 0x7F;	//Close AD_Converter
+   \   00000000   E70F               LDI     R16, 127
+   \   00000002   9300....           STS     _A_ADCSRA, R16
+     78          	ACSR = 0x80;    //Close Analog_comparetor
+   \   00000006   E800               LDI     R16, 128
+   \   00000008   BF00               OUT     0x30, R16
+     79          	SPCR_SPIE = 0;  //Close SPI
+   \   0000000A   B50C               IN      R16, 0x2C
+   \   0000000C   770F               ANDI    R16, 0x7F
+   \   0000000E   BD0C               OUT     0x2C, R16
+     80          	PRR = 0x4B;
+   \   00000010   E40B               LDI     R16, 75
+   \   00000012   9300....           STS     _A_PRR, R16
+     81          			        //7bit PRTWI  0
+     82          			           //6bit PRTIM2 1 shut down Timer/Counter2
+     83          			           //5bit PRTIM0 0
+     84          			           //4bit Reserved bit
+     85          			           //3bit PRTIM1 1 shut down Timer/Counter1
+     86          			           //2bit PRSPI  0 If using debugWIRE On-chip Debug System,this bit not be written
+     87          			           //1bit PRUSART0 1 shut down USART clock
+     88          			           //0bit PRADC    1 shut down ADC
+     89          }
+   \   00000016   9508               RET
+   \   00000018                      REQUIRE _A_ADCSRA
+   \   00000018                      REQUIRE _A_ACSR
+   \   00000018                      REQUIRE _A_SPCR
+   \   00000018                      REQUIRE _A_PRR
+     90          
+     91          /*
+     92           *功能：
+     93           *入口：
+     94           *出口：
+     95           *备注：
+     96           *函数性质：
+     97           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     98          void Init_PowerOff (void)
+   \                     Init_PowerOff:
+     99          {
+    100          	SMCR_SM1 = 1;
+   \   00000000   B703               IN      R16, 0x33
+   \   00000002   6004               ORI     R16, 0x04
+   \   00000004   BF03               OUT     0x33, R16
+    101          	SMCR_SE  = 1;
+   \   00000006   B703               IN      R16, 0x33
+   \   00000008   6001               ORI     R16, 0x01
+   \   0000000A   BF03               OUT     0x33, R16
+    102          //	SMCR = 0x40; //bits3..1:SM2..0:Sleep Mode Selet
+    103          	             //000  Idle
+    104          	             //001  ADC Noise Reduction
+    105          	             //010  Power-down
+    106          	             //011  Power-save
+    107          	             //100  Reserved
+    108          	             //101  Reserved
+    109          	             //110  Standby
+    110          	             //111  Reserved
+    111          }
+   \   0000000C   9508               RET
+   \   0000000E                      REQUIRE _A_SMCR
+    112          
+    113          /*
+    114           *功能：
+    115           *入口：
+    116           *出口：
+    117           *备注：
+    118           *函数性质：
+    119           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    120          void Init_PowerOn (void)
+   \                     Init_PowerOn:
+    121          {
+    122          	SMCR_SE = 0;
+   \   00000000   B703               IN      R16, 0x33
+   \   00000002   7F0E               ANDI    R16, 0xFE
+   \   00000004   BF03               OUT     0x33, R16
+    123          }
+   \   00000006   9508               RET
+   \   00000008                      REQUIRE _A_SMCR
+    124          
+    125          /*
+    126           *功能：
+    127           *入口：
+    128           *出口：
+    129           *备注：
+    130           *函数性质：
+    131           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+    132          void Init_All (void)
+   \                     Init_All:
+    133          {
+    134          	Init_GpioPort();
+   \   00000000   ....               RCALL   Init_GpioPort
+    135          	Init_PowerManager();
+   \   00000002   ....               RCALL   Init_PowerManager
+    136          	Scp_Init();                     //气压                     
+   \   00000004   ....               RCALL   Scp_Init
+    137          	Comp_HardwareInit();           //罗盘
+   \   00000006   ....               RCALL   Comp_HardwareInit
+    138          	Flash_DataInit();
+   \   00000008   ....               RCALL   Flash_DataInit
+    139          	Twi_SlaveInit();              //I2C
+   \   0000000A   ....               RCALL   Twi_SlaveInit
+    140          }
+   \   0000000C   9508               RET
+
+   Maximum stack usage in bytes:
+
+   RSTACK Function
+   ------ --------
+      2   Init_All
+        2   -> Comp_HardwareInit
+        2   -> Flash_DataInit
+        2   -> Init_GpioPort
+        2   -> Init_PowerManager
+        2   -> Scp_Init
+        2   -> Twi_SlaveInit
+      2   Init_GpioPort
+      2   Init_GpioPortRe
+      2   Init_PowerManager
+      2   Init_PowerOff
+      2   Init_PowerOn
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      14  Init_All
+      26  Init_GpioPort
+      18  Init_GpioPortRe
+      24  Init_PowerManager
+      14  Init_PowerOff
+       8  Init_PowerOn
+       1  _A_ACSR
+       1  _A_ADCSRA
+       1  _A_DDRB
+       1  _A_DDRC
+       1  _A_DDRD
+       1  _A_PORTB
+       1  _A_PORTC
+       1  _A_PORTD
+       1  _A_PRR
+       1  _A_SMCR
+       1  _A_SPCR
+
+ 
+  11 bytes in segment ABSOLUTE
+ 104 bytes in segment CODE
+ 
+ 104 bytes of CODE memory
+   0 bytes of DATA memory (+ 11 bytes shared)
+
+Errors: none
+Warnings: none

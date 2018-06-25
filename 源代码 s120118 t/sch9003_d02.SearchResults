@@ -1,0 +1,6 @@
+---- scp1000_tag Matches (5 in 1 files) ----
+Main.c:static unsigned char scp1000_tag=0;
+Main.c:		scp1000_tag=1;
+Main.c:		if(scp1000_tag==1)
+Main.c:			if(scp1000_tag==1)
+Main.c://			scp1000_tag=1;

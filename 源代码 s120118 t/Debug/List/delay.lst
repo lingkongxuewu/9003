@@ -1,0 +1,194 @@
+###############################################################################
+#                                                                             #
+# IAR C/C++ Compiler V6.21.3.50641 for Atmel AVR        30/May/2018  14:28:53 #
+# Copyright 1996-2013 IAR Systems AB.                                         #
+#                                                                             #
+#    Source file  =  G:\罗盘\源代码 s120118 t\src\delay.c                     #
+#    Command line =  "G:\罗盘\源代码 s120118 t\src\delay.c" --cpu=m88 -ms -o  #
+#                    "G:\罗盘\源代码 s120118 t\Debug\Obj\" -lCN               #
+#                    "G:\罗盘\源代码 s120118 t\Debug\List\"                   #
+#                    --initializers_in_flash --no_inline --no_cross_call      #
+#                    --no_tbaa --debug -DENABLE_BIT_DEFINITIONS -e            #
+#                    --eeprom_size 512 --clib -Om                             #
+#    List file    =  G:\罗盘\源代码 s120118 t\Debug\List\delay.lst            #
+#    Object file  =  G:\罗盘\源代码 s120118 t\Debug\Obj\delay.r90             #
+#                                                                             #
+#                                                                             #
+###############################################################################
+
+G:\罗盘\源代码 s120118 t\src\delay.c
+      1          
+      2          /*******************************Copyright (c)***************************/
+      3          /*
+      4           *                         深圳铭之光电子技术有限公司
+      5           *                         工　　　　　程　　　　　部
+      6           *                         http://www.sinocomopto.com
+      7           */
+      8          /***********************************************************************/
+      9          
+     10          #include  "_Include.h"
+     11          
+     12          #define F_CPU_1MHz   1000000 //no operation time-consuming 1us
+     13          
+     14          /***********************************************************************/
+     15          #ifdef F_CPU_1MHz
+     16          /*
+     17           *功能：
+     18           *入口：
+     19           *出口：
+     20           *备注：
+     21           *函数性质：
+     22           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     23          void delay_us(int8u n)
+   \                     delay_us:
+     24          {
+     25          	for(int8u i=n;i>0;i--)
+   \   00000000   2F10               MOV     R17, R16
+   \   00000002   C002               RJMP    ??delay_us_0
+     26          	{
+     27          	  __no_operation();
+   \                     ??delay_us_1:
+   \   00000004   0000               NOP
+     28          	}
+   \   00000006   951A               DEC     R17
+   \                     ??delay_us_0:
+   \   00000008   2311               TST     R17
+   \   0000000A   F7E1               BRNE    ??delay_us_1
+     29          }
+   \   0000000C   9508               RET
+     30          
+     31          /*
+     32           *功能：
+     33           *入口：
+     34           *出口：
+     35           *备注：
+     36           *函数性质：
+     37           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     38          void _delay1ms(void)
+   \                     _delay1ms:
+     39          {
+   \   00000000   938A               ST      -Y, R24
+     40          	for(int8u i=10;i>0;i--)
+   \   00000002   E08A               LDI     R24, 10
+   \   00000004   C003               RJMP    ??_delay1ms_0
+     41          		delay_us(100);
+   \                     ??_delay1ms_1:
+   \   00000006   E604               LDI     R16, 100
+   \   00000008   ....               RCALL   delay_us
+   \   0000000A   958A               DEC     R24
+   \                     ??_delay1ms_0:
+   \   0000000C   2388               TST     R24
+   \   0000000E   F7D9               BRNE    ??_delay1ms_1
+     42          }
+   \   00000010   9189               LD      R24, Y+
+   \   00000012   9508               RET
+     43          
+     44          /*
+     45           *功能：
+     46           *入口：
+     47           *出口：
+     48           *备注：
+     49           *函数性质：
+     50           */
+
+   \                                 In  segment CODE, align 2, keep-with-next
+     51          void delay_ms(int16u n)
+   \                     delay_ms:
+     52          {
+   \   00000000   ....               RCALL   ?PROLOGUE2_L09
+     53          	for(int16u i=n;i>0;i--)
+   \   00000002   01C8               MOVW    R25:R24, R17:R16
+   \   00000004   C002               RJMP    ??delay_ms_0
+     54          	{
+     55          	  _delay1ms();
+   \                     ??delay_ms_1:
+   \   00000006   ....               RCALL   _delay1ms
+     56          	}
+   \   00000008   9701               SBIW    R25:R24, 1
+   \                     ??delay_ms_0:
+   \   0000000A   2F08               MOV     R16, R24
+   \   0000000C   2B09               OR      R16, R25
+   \   0000000E   F7D9               BRNE    ??delay_ms_1
+     57          }
+   \   00000010   E0E2               LDI     R30, 2
+   \   00000012   ....               RJMP    ?EPILOGUE_B2_L09
+     58          
+     59          #else
+     60          /*
+     61           *功能：
+     62           *入口：
+     63           *出口：
+     64           *备注：
+     65           *函数性质：
+     66           */
+     67          void delay_us(int8u n)
+     68          {
+     69          	for(int8u i=n;i>0;i--)
+     70          	{
+     71          		for(int8u i=8;i>0;i--)
+     72          		{
+     73          			__no_operation();
+     74          		}
+     75          	}
+     76          }
+     77          
+     78          /*
+     79           *功能：
+     80           *入口：
+     81           *出口：
+     82           *备注：
+     83           *函数性质：
+     84           */
+     85          void _delay1ms(void)
+     86          {
+     87          	for(int8u i=10;i>0;i--)
+     88          	  delay_us(100);
+     89          }
+     90          
+     91          /*
+     92           *功能：
+     93           *入口：
+     94           *出口：
+     95           *备注：
+     96           *函数性质：
+     97           */
+     98          void delay_ms(int16u n)
+     99          {
+    100          	for(int16u i=n;i>0;i--)
+    101          	  _delay1ms();
+    102          }
+    103          
+    104          #endif
+    105          
+    106          
+
+   Maximum stack usage in bytes:
+
+   CSTACK RSTACK Function
+   ------ ------ --------
+      1      2   _delay1ms
+        1      2   -> delay_us
+      2      2   delay_ms
+        2      2   -> _delay1ms
+      0      2   delay_us
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+      20  _delay1ms
+      20  delay_ms
+      14  delay_us
+
+ 
+ 54 bytes in segment CODE
+ 
+ 54 bytes of CODE memory
+
+Errors: none
+Warnings: none
